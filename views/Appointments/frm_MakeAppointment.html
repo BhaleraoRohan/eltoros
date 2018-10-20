@@ -1,0 +1,135 @@
+<div class="container" data-ng-controller="makeAppointmentCtrl">
+
+
+	<div class="card">
+		<div class="card">
+			<div class="card-header">
+				<h2 title="Make doctor active or deactive...">New Appointment</h2>
+			</div>
+		</div>
+
+		<div class="card-body card-padding p-t-0">
+
+			<div class="row">
+
+				<div class="col-sm-4">
+					<div class="form-group">
+						<div class="fg-line">
+							<label for="CunsultationStartTime">Select Doctor </label>
+							<div class="select">
+								<select class="form-control" data-ng-model="params.UserID"
+									style="margin-top: -9px;">
+									<option value="{{item.UserID}}"
+										data-ng-if="item.isTodayWorkingDay=='Y'"
+										data-ng-repeat="item in DoctorList">Dr. {{item.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--  -->
+			<div data-ng-if="params.UserID">
+				<div class="row" data-ng-controller="DatepickerDemoCtrl">
+
+					<div class="col-sm-4">
+						<div class="form-group fg-line">
+							<label for="FirstName">Mobile Number</label> <input type="text"
+								class="form-control input-sm"
+								data-ng-model="params.MobileNumber"
+								placeholder="Contact Details...">
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="form-group fg-line">
+							<label for="FirstName">Appointment Date</label>
+							<div class="date-picker input-group"
+								ng-class="{ 'is-opened': opened == true }">
+
+								<div class="fg-line" ng-class="{ 'fg-toggled': opened == true }">
+									<input data-ng-click="open($event, 'opened')" type="text"
+										class="form-control" uib-datepicker-popup="{{format}}"
+										show-weeks="false" ng-model="params.date" is-open="opened"
+										min-date="minDate" datepicker-options="dateOptions"
+										ng-required="true" close-text="Close"
+										placeholder="Select Date" />
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="CunsultationStartTime">Time Slot </label>
+								<div class="select">
+									<select class="form-control br-radius-zero"
+										data-ng-model="params.TimeSlot" id="appointmentTime">
+										<option value="0">Select time-slot for the
+											appointment</option>
+										<option value="Morning">Morning</option>
+										<option value="Noon">Noon</option>
+										<option value="Evening">Evening</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="CunsultationStartTime">Appointment Type </label>
+								<div class="select">
+									<select class="form-control br-radius-zero"
+										data-ng-model="params.AppointmentType" id="appointmentTime">
+										<option value="0">Select</option>
+										<option value="Emergency">Emergency</option>
+										<option value="Regular">Regular</option>
+										<option value="Scheduled">Scheduled</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row" data-ng-if="params.type == 'Emergency'">
+					<div class="col-sm-4">
+						<div class="form-group">
+
+							<div class="fg-line">
+								<label for="CunsultationStartTime">Purpose</label>
+								<textarea class="form-control" data-ng-model="params.Purpose"
+									rows="5" placeholder="Purpose"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr />
+
+				<center>
+					<button class="btn btn-success waves-effect"
+						data-ng-click="btnSubmit();" style="margin-top: 10px;">
+						Submit</button>
+					 <button class="btn btn-danger waves-effect"
+						data-ng-click="btnClose();" style="margin-top: 10px;">
+					Cancel</button> 
+				</center>
+			</div>
+
+			<div data-ng-if="inactiveDocs.length > 0" style="color:red;">
+				<b><u>Note : Following doctor(s) is/are not available today.</u></b> <br/>
+				<p data-ng-repeat="item in inactiveDocs" style="margin-bottom:0px !important">{{$index+1}}.  Dr. {{item  | uppercase}}</p>
+			</div>
+
+		</div>
+	</div>
+</div>

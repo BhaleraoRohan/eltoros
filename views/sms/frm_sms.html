@@ -1,0 +1,110 @@
+<div class="container" data-ng-controller="smsCtrl">
+	<div class="block-header">
+		<h2>Messaging</h2>
+		
+		<span class="pull-right" style="margin-top:-20px;"  data-ng-if="PageType === 'list'">
+			<button class="btn btn-primary waves-effect" data-ng-click="btnAddNew();">Add New Template</button>
+		</span> 
+
+		 
+
+	</div>
+
+	<!-- Step 1 -->
+	<div class="card">
+		<div class="card-header" data-ng-if="PageType === 'list'">
+			<h2>
+				My Templates <small>Total : {{templateList.length}}</small>
+			</h2>
+		</div>
+		<div class="card-header" data-ng-if="PageType === 'new'">
+			<h2>
+				Add New  
+			</h2>
+			<hr/>
+		</div>
+		<div class="card-body card-padding p-t-0"
+			data-ng-controller="DatepickerDemoCtrl">
+
+			<div data-ng-if="PageType === 'list'">
+				<div class="table-responsive">
+					<table ng-table="tableBasic"
+						class="table table-striped table-vmiddle">
+						<tr data-ng-repeat="w in templateList">    
+							<td data-title="'SRNO'">{{ $index+1 }}</td>
+							<td data-title="'Template Type'"  >
+							  
+							 <a href="" data-ng-click="RowClick(w)">{{ w.type}}</a> 
+							<td data-title="'Language'">{{w.language}}</td>  									
+							<td data-title="'isActive'">{{w.isActive === '1' ? 'Active' : 'Inactive'}}</td>  
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			<div data-ng-if="PageType === 'new'">
+			
+				<div class="row"  >
+	
+					<div class="col-sm-4">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="CunsultationStartTime">Select Template Type</label>
+								<div class="select">
+									<select class="form-control" data-ng-model="params.type"
+										style="margin-top: -6px;">
+										<option value="Appointment">Appointment</option>
+									</select>
+								</div>
+							</div>
+						</div>      
+					</div>  
+					<div class="col-sm-4">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="CunsultationStartTime">Select Language</label>
+								<div class="select">
+									<select class="form-control" data-ng-model="params.language"
+										style="margin-top: -6px;">
+										<option value="ENG">English</option>
+										<option value="KAN">Kannada</option>
+										<option value="MAR">Marathi</option> 
+									</select>
+								</div>
+							</div>
+						</div>      
+					</div>  
+					<div class="col-sm-4" data-ng-show="false">
+						<input type="checkbox" style="margin-top: 27px;"
+							data-ng-model="params.isActive" /> Is Active
+					</div>    
+				</div>
+					
+					
+				<div class="row"  >
+					<div class="col-sm-8">
+						<label>Message <small>Characters ({{120-params.message.length}}/120)</small></label>
+						<br/>
+						<textarea data-ng-model="params.message"
+								maxlength="120" rows="5" style="resize:none;width:100%;" >
+						</textarea> 
+						
+					</div>
+				</div>
+			<hr/>
+			
+			<center>			
+				<button class="btn btn-success waves-effect" 
+				data-ng-click="btnCreate();">{{PageType === 'new' ? 'Create' : 'Update'}}</button>
+				
+				
+				<button class="btn btn-warning waves-effect" 
+				data-ng-click="btnCancel();">Cancel</button>
+			</center>
+			</div>
+
+
+			 
+		</div>
+	</div>
+</div> 

@@ -1,0 +1,155 @@
+<div class="container invoice" data-ng-controller="invoiceDetailsCtrl">
+
+    <div class="block-header">
+        <h2>Invoice <small>Printing Invoice</small></h2> 
+            </div>
+    
+    <div class="card">
+        <div class="card-header ch-alt text-center">
+            <center style="font-size: x-large;">Annapurna Hospital</center>
+        </div>
+        
+        <div class="card-body card-padding">
+            <div class="row m-b-25">
+                <div class="col-xs-6">
+                    <div class="text-right">
+                        <p class="c-gray">Invoice from</p>
+                        
+                        <h4>Dr. Ravi Pangi</h4>
+                        
+                        <span class="text-muted">
+                            <address>
+                                44, Qube Towers
+                                  Media City, Athani<br>
+                               		India
+                            </address>
+
+                            0097154686384<br/>
+                            drravi@gmail.com
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="col-xs-6">
+                    <div class="i-to">
+                        <p class="c-gray">Invoice to</p>
+                        
+                        <h4>{{InvoiceDetails.PatientName}}</h4>
+                        
+                        <span class="text-muted">
+                            <address>
+                                {{InvoiceDetails.ComeFrom}}
+                            </address>
+
+                            {{InvoiceDetails.MobileNumber}}<br/> 
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="clearfix"></div>
+            
+            <div class="row m-t-25 p-0 m-b-25">
+                <div class="col-xs-3">
+                    <div class="bgm-amber brd-2 p-15">
+                        <div class="c-white m-b-5">Invoice#</div>
+                        <h2 class="m-0 c-white f-300">456213</h2>
+                    </div>
+                </div>
+                
+                <div class="col-xs-3">
+                    <div class="bgm-blue brd-2 p-15">
+                        <div class="c-white m-b-5">Invoice Date</div>
+                        <h2 class="m-0 c-white f-300">{{InvoiceDetails.date}}</h2>
+                    </div>
+                </div>
+                
+                <div class="col-xs-3">
+                    <div class="bgm-green brd-2 p-15">
+                        <div class="c-white m-b-5">Next Visit Date</div>
+                        <h2 class="m-0 c-white f-300">Not Given</h2> 
+                    </div>
+                </div>
+                
+                <div class="col-xs-3">
+                    <div class="bgm-red brd-2 p-15">
+                        <div class="c-white m-b-5">Total Charge</div>
+                        <h2 class="m-0 c-white f-300">{{InvoiceDetails.BillAmount}}/-</h2>
+                    </div>
+                </div>
+                
+                
+                
+               
+            </div>
+            
+            <div class="clearfix"></div>
+            
+            <table class="table i-table m-t-25 m-b-25">
+                <thead class="text-uppercase">
+                    <th class="highlight" style="width: 80%;">Particulars</th> 
+                    <th class="highlight">TOTAL</th>
+                </thead>
+                
+                <tbody>
+                    <thead>
+                    
+                    	<tr>
+                            <td width="50%">
+                                <h5 class="text-uppercase f-400">Doctor Fees</h5>
+                                <p class="text-muted">Doctor's revised consultation fees.
+                            </td>
+                             
+                            <td class="highlight">{{InvoiceDetails.ConsultationFees}}/-</td>
+                        </tr>
+                        <tr data-ng-repeat="p in InvoiceDetails.Particulars">
+                            <td width="50%">
+                                <h5 class="text-uppercase f-400">{{p.InvestigationName}} : ({{p.inv_type}})</h5>
+                                <p class="text-muted">{{p.comments}}</p>
+                            </td>
+                             
+                            <td class="highlight">{{p.TestPrice}}/-</td>
+                        </tr>
+                        
+                        <tr>
+                            <td ><span class="pull-right"><b>Total</b></span></td>
+                            <td class="highlight">{{InvoiceDetails.BillAmount}}/-</td>
+                        </tr>
+                    </thead> 
+                </tbody>
+            </table>
+            
+            <div class="clearfix"></div>
+            
+            <div class="p-25" style="margin-top:10px;">
+            
+            <p style="margin-bottom:-13px; ">(Doctor's Signature)</p><br/>
+            <label>Date : {{InvoiceDetails.date}}</label>
+            
+            
+            </div>
+            <div class="p-25" data-ng-show="false">
+                <h4 class="c-green f-400">REMARKS</h4>
+                <p class="c-gray">Ornare non tortor. Nam quis ipsum vitae dolor porttitor interdum. Curabitur faucibus erat vel ante fermentum lacinia. Integer porttitor laoreet suscipit. Sed cursus cursus massa ut pellentesque. Phasellus vehicula dictum arcu, eu interdum massa bibendum.</p>
+                
+                <br/>
+                
+                <h4 class="c-green f-400">MERCY FOR YOUR BUSINESS</h4>
+                <p class="c-gray">Proin ac iaculis metus. Etiam nisi nulla, fermentum blandit consectetur sed, ornare non tortor. Nam quis ipsum vitae dolor porttitor interdum. Curabitur faucibus erat vel ante fermentum lacinia. Integer porttitor laoreet suscipit. Sed cursus cursus massa ut pellentesque. Phasellus vehicula dictum arcu, eu interdum massa bibendum sit amet.</p>
+            </div>
+        </div>
+        
+        <footer class="m-t-15 p-20">
+            <ul class="list-inline text-center list-unstyled">
+                <li class="m-l-5 m-r-5"><small>support@annapurna.com</small></li>
+                <li class="m-l-5 m-r-5"><small>00971 452 9900</small></li>
+                <li class="m-l-5 m-r-5"><small>www.annapurna.com</small></li>
+            </ul>
+            <span class="pull-right"><small>Powered By Eltoros</small></span>
+        </footer>
+    </div>
+    
+</div>
+
+<button class="btn btn-float bgm-red m-btn" print><i class="zmdi zmdi-print"></i></button>

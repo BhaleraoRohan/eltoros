@@ -1,0 +1,322 @@
+<div class="container" data-ng-controller="appointmentV1Ctrl as tctrl">
+	<div class="block-header">
+		<h2>My Appointments</h2>
+
+
+			
+
+		<ul class="actions">
+			<li class="dropdown" uib-dropdown><a href="" uib-dropdown-toggle>
+					<i class="zmdi zmdi-more-vert"></i>
+			</a>
+
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="">Refresh</a></li>
+					
+				</ul></li>
+		</ul>
+
+	</div>
+
+
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				Todays Appointment <small>Total appointments :
+					{{AppointmentList.length}} <span class="pull-right">
+						Date : {{date | date:'dd-MM-yyyy'}}</span> <!-- <span> <input
+						type="radio" value="G" data-ng-model="qw"> <i
+						class="input-helper"></i> General &nbsp;&nbsp;&nbsp; <input
+						type="radio" value="E" data-ng-model="qw"> <i
+						class="input-helper"></i> Emergency &nbsp;&nbsp;&nbsp; <input
+						type="radio" value="A" data-ng-model="qw"> <i
+						class="input-helper"></i> All
+
+				</span> -->
+				</small>
+			</h2>
+
+		</div>
+
+		<!-- data-ng-style="w.Priority == 'COMPLETE' ? {'background-color': '#C8E6C9'} : '' -->
+		<div class="card-body card-padding p-t-0"">
+
+
+			<div class="row m-b-20"  > 
+                <div class="col-sm-8 m-b-20">
+                	 <label class="radio radio-inline m-r-20">
+		                Get Appointment List as : 
+		            </label>
+                    <label class="radio radio-inline m-r-20">
+		                <input type="radio" name="inlineRadioOptions" data-ng-model="atype" value="Regular" data-ng-disabled="list_Regular.length==0">
+		                <i class="input-helper"></i>
+		                Regular ({{list_Regular.length}})
+		            </label>
+		            <label class="radio radio-inline m-r-20">
+		                <input type="radio" name="inlineRadioOptions" data-ng-model="atype"  value="Emergency" data-ng-disabled="list_Emergency.length==0">
+		                <i class="input-helper"></i>
+		                Emergency  ({{list_Emergency.length}})
+		            </label>
+		            <label class="radio radio-inline m-r-20">
+		                <input type="radio" name="inlineRadioOptions" data-ng-model="atype" value="Scheduled" data-ng-disabled="list_Scheduled.length==0">
+		                <i class="input-helper"></i>
+		                Scheduled  ({{list_Scheduled.length}})
+		            </label>
+                   
+                </div> 
+                
+                <div class="col-sm-4 m-b-20">
+                     <span class="pull-right" style="    padding-right: 0px;  margin-top: -8px;">
+                     
+                    <button class="btn btn-primary waves-effect" ng-click="isCollapsed = !isCollapsed"> Todays Slot</button>
+                    	 <button  class="btn btn-success" data-ng-click="btnShowMessage()"  > 
+								 Send Message</button>	</span>
+                </div> 
+            </div>
+            <hr data-ng-if="pageMode !== 'sendMessage' " 
+            style="margin-top: 0px !important;margin-bottom: 0px  !important;" > 
+
+			<div data-ng-if="pageMode === 'sendMessage'">
+			<hr/>
+				<center>
+					<h2>Send Message</h2>
+				</center>
+				<br/>
+				<div class="row">
+
+					<div class="col-sm-4 m-b-20">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="messageType">Cause of Messaging</label>
+								<div class="select">
+									<select class="form-control"  data-ng-model="msg.MCause"
+										style="margin-top: -5px;">
+										<option value="Type0" >Select</option>
+										<option value="Type1" >Appointment Notification</option>
+										<option value="Type2" >Appointment Cancellation</option>
+										<option value="Type2" >Reminder Message</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-sm-4 m-b-20" data-ng-if="msg.MCause != 'Type0'">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="messageType">Patient Category</label>
+								<div class="select">
+									<select class="form-control" data-ng-model="msg.PCategory"
+										style="margin-top: -5px;">
+										<option value="Type0" >Select</option>
+										<option value="Type1" >Regular</option>
+										<option value="Type2" >Emergency</option>
+										<option value="Type2" >Scheduled</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-sm-4 m-b-20"  data-ng-if="msg.MCause != 'Type0'">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="messageType">Patient</label>
+								<div class="select">
+									<select class="form-control" data-ng-model="msg.NumOfPatients"
+										style="margin-top: -5px;"> 									
+										<option value="1" >Next 1 Patient</option>
+										<option value="2" >Next 2 Patients</option>
+										<option value="3" >Next 3 Patients</option>										
+										<option value="4" >Next 4 Patients</option>
+										<option value="5" >Next 5 Patients</option>
+										<option value="10" >Next 10 Patients</option>										
+										<option value="15" >Next 15 Patients</option> 										
+										<option value="20" >Next 20 Patients</option>   
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+
+				<div class="row" data-ng-if="msg.MCause != 'Type0'">
+					<div class="col-sm-12 m-b-20">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="Message">Message (Note : Max 120 characters allowed.)</label>
+								<textarea class="form-control" id="Message" maxlength="120"
+									data-ng-model="msg.text" rows="4" placeholder="Start typing..."></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br/>
+				<center>
+					<button class="btn btn-primary" data-ng-click="btnSendMessage();" > Send </button>
+					<button class="btn btn-warning" data-ng-click="btnCancel();"  > Cancel</button>
+				</center>
+			
+			  
+			</div>
+			
+			<div uib-collapse="!isCollapsed" class="collapse" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+                <div class="alert ng-isolate-scope alert-info" data-ng-class="['alert-' + (type || 'warning'), closeable ? 'alert-dismissible' : null]" role="alert" type="info">
+    				<button data-ng-show="closeable" type="button" class="close ng-hide" data-ng-click="close({$event: $event})"></button>
+        <!--  data-ng-transclude=""-->
+          		 <div > 
+          		 	
+          		 	<div class="table-responsive ng-scope"  >
+          		 		<table class="table">
+          		 		<tr style="background-color: #ffd350">
+          		 		<td title="{{SlotTitle}}">Today   </td>
+          		 			<td data-ng-repeat="slot in TodaysSlot">
+          		 				<label class="checkbox checkbox-inline m-r-20"  >
+											<input type="checkbox" value="1" data-ng-model="slot.IsActive" data-ng-change="ChangeSlotStatus(slot.SlotNumber,slot.IsActive);"> <i
+											class="input-helper"></i>S{{slot.SlotNumber}}
+								</label>
+          		 			</td>
+          		 		</tr> 
+          		 		
+          		 	</table> 
+          		 </div>
+          		 
+          		 	 
+				</div>
+				</div>
+            </div>
+       
+        <span aria-hidden="true"> </span>
+        <span class="sr-only">Close</span>
+			
+			
+			
+			<div data-ng-if="pageMode === 'list'">
+			<div class="row  m-b-20" >
+				<div class="col-sm-12 m-b-20"  data-ng-if="atype === 'Regular'"> 
+					<div class="table-responsive">
+						<table ng-table="tctrl.tableFilter"
+							class="table table-striped table-vmiddle" show-filter="false">
+							<!-- <table ng-table="tableBasic"
+					class="table table-striped table-vmiddle"> -->
+							<tr style="background-color:{{w.color}}"
+							data-ng-repeat="w in list_Regular">
+								<td data-title="'QID'">{{ w.AppointmentID }}</td>
+								<td data-title="'Slot'"><b>Slot {{ w.SlotNumber }}</b></td>
+								<td data-title="'Name'">
+									<a data-ng-if="w.Priority !== 'INVESTIGATION'"
+									data-ng-click="rowClick('PROCESS',w);" href="">
+									{{w.PatientName }}</a>
+									<label data-ng-if="w.Priority === 'INVESTIGATION'">{{w.PatientName }}</label>
+								</td>
+								<td data-title="'Mobilenumber'">{{w.MobileNumber}}</td>
+								<td data-title="'Priority'">{{ w.Priority }}</td> 
+							</tr>
+						</table>
+					</div> 
+				</div>
+
+				<div class="col-sm-12 m-b-20"  data-ng-if="atype === 'Emergency'"> 
+					<div class="table-responsive">
+						<table ng-table="tctrl.tableFilter"
+							class="table table-striped table-vmiddle" show-filter="false">
+							<!-- <table ng-table="tableBasic"
+					class="table table-striped table-vmiddle"> -->
+							<tr  style="background-color:{{w.color}}" data-ng-repeat="w in list_Emergency">
+								<td data-title="'QID'">{{ w.AppointmentID }}</td>
+								<td data-title="'Slot'"><b>Slot {{ w.SlotNumber }}</b></td>
+								<td data-title="'Name'"><a data-ng-if="w.Priority !== 'INVESTIGATION'"
+									data-ng-click="rowClick('PROCESS',w);" href="">
+									{{w.PatientName }}</a>
+									<label data-ng-if="w.Priority === 'INVESTIGATION'">{{w.PatientName }}</label>
+								</td>
+								<td data-title="'Mobilenumber'">{{w.MobileNumber}}</td>
+								<td data-title="'Priority'">{{ w.Priority }}</td>
+
+							</tr>
+						</table> 
+					</div>
+
+				</div>
+				
+				<div class="col-sm-12 m-b-20"  data-ng-if="atype === 'Scheduled'"> 
+					<div class="table-responsive">
+						<table ng-table="tctrl.tableFilter"
+							class="table table-striped table-vmiddle" show-filter="false">
+							<!-- <table ng-table="tableBasic"
+					class="table table-striped table-vmiddle"> -->
+							<tr  style="background-color:{{w.color}}" data-ng-repeat="w in list_Scheduled">
+								<td data-title="'QID'">{{ w.AppointmentID }}</td>
+								<td data-title="'Slot'"><b>Slot {{ w.SlotNumber }}</b></td>
+								<td data-title="'Name'"><a data-ng-if="w.Priority !== 'INVESTIGATION'"
+									data-ng-click="rowClick('PROCESS',w);" href="">
+									{{w.PatientName }}</a>
+									<label data-ng-if="w.Priority === 'INVESTIGATION'">{{w.PatientName }}</label>
+								</td>
+								<td data-title="'Mobilenumber'">{{w.MobileNumber}}</td>
+								<td data-title="'Priority'">{{ w.Priority }}</td>
+
+							</tr>
+						</table> 
+					</div>
+
+				</div>
+
+			</div>
+			
+			</div>
+			<br/>
+			<hr/>
+
+
+		</div>
+	</div>
+
+
+	<!-- <div id="ChangeStatus" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+
+			Modal content
+			<div class="modal-content">
+
+				<div class="modal-body">
+				
+					
+					 <center><label>Change Status</<label></center>
+					 <hr/>
+					<p style="padding-left: 58px;">
+						<button class="btn"
+							style="background-color: #FFEB3B; width: 130px; margin-top: 5px;"
+							data-ng-click="ChangeStatusAndNavigate('PROCESS');">PROCESS</button>
+						<br />
+
+						<button class="btn"
+							style="background-color: #03A9F4; width: 130px; margin-top: 5px;"
+							data-ng-click="ChangeStatusAndNavigate('INVESTIGATION');">INVESTIGATION</button>
+						<br />
+
+						<button class="btn"
+							style="background-color: #f44336; width: 130px; margin-top: 5px;"
+							data-ng-click="ChangeStatusAndNavigate('DELAYED');">DELAYED</button>
+						<br />
+
+						<button class="btn"
+							style="background-color: #8BC34A; width: 130px; margin-top: 5px;"
+							data-ng-click="ChangeStatusAndNavigate('COMPLETE');">COMPLETE</button>
+					</p>
+
+					<br />
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+
+	</div> -->
+
+
+</div>
+

@@ -1,0 +1,290 @@
+<div class="container" data-ng-controller="userDetailsCtrl">
+
+	<div class="card">
+
+		<span class="pull-Left" style="margin-top: -20px; padding: 10px;">
+			<button class="btn btn-warning waves-effect"
+				data-ng-click="btnBack();" style="margin-top: 10px;">
+				<i class="zmdi zmdi-arrow-back"></i> Back
+			</button>
+			<button class="btn btn-success waves-effect"
+				style="margin-top: 10px;" data-ng-if="PageMode === 'New'"
+				data-ng-click="btnCRUD('INSERT');">
+				<i class="zmdi zmdi-thumb-up"></i> Save
+			</button>
+			<button class="btn btn-primary waves-effect"
+				data-ng-click="btnCRUD('UPDATE');" style="margin-top: 10px;"
+				data-ng-if="PageMode === 'Update'">
+				<i class="zmdi zmdi-edit"></i> Update
+			</button>
+			<button class="btn btn-danger waves-effect" data-ng-show="false"
+				data-ng-click="btnCRUD('DELETE');" style="margin-top: 10px;"
+				data-ng-if="PageMode === 'Update'">
+				<i class="zmdi zmdi-delete"></i> Delete
+			</button>
+		</span>
+
+		<hr />
+		<div class="card-header">
+			<h2 title="Make doctor active or deactive...">
+				User Details <label data-ng-if="params.name.length > 0"> {{
+					": " + params.name}} <span data-ng-show="false"> (
+						{{params.RoleName}} ) {{params.UserType}} </span>
+				</label>
+			</h2>
+		</div>
+		<div class="card-body card-padding p-t-0"
+			data-ng-controller="DatepickerDemoCtrl">
+
+			<form role="form">
+
+				<div class="row" data-ng-if="PageMode == 'New'">
+					<div class="col-sm-4">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="CunsultationEndTime">I am, </label>
+								<div class="select">
+									<select class="form-control" data-ng-model="params.UserType">
+										<option value="2">Doctor</option>
+										<option value="3">Reception Desk</option>
+										<option value="4">Investigator</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4">
+
+						<div class="form-group fg-line">
+							<label for="exampleInputEmail1">User Name</label> <input
+								type="text" class="form-control input-sm"
+								data-ng-disabled="PageMode === 'Update'"
+								data-ng-model="params.name" id="exampleInputEmail1"
+								placeholder="Name">
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+
+						<div class="form-group fg-line">
+							<label for="Contact_1">Contact Details [Work] </label> <input
+								data-ng-model="params.Contact_1" maxlength="11" type="text"
+								class="form-control input-sm" id="Contact_1"
+								placeholder="Contact Number 1">
+						</div>
+					</div>
+
+
+
+					<!-- 
+					<div class="col-sm-4">
+						<div class="form-group fg-line">
+							<label for="ts2">Active </label>
+							<div class="toggle-switch" data-ts-color="blue"
+								style="margin-left: 15px;">
+								<input id="ts2" type="checkbox" hidden="hidden"  
+									data-ng-model="params.isActive"> <label for="ts2"
+									class="ts-helper"> </label>
+							</div>  
+						</div>
+					</div> -->
+				</div>
+			</form>
+
+
+			<div data-ng-if="params.RoleID == '2'">
+
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="form-group fg-line">
+							<label for="Contact_2">Contact Details [Other] </label> <input
+								data-ng-model="params.Contact_2" maxlength="11" type="text"
+								class="form-control input-sm" id="Contact_2"
+								placeholder="Contact Number 2">
+						</div>
+					</div>
+
+
+					<div class="col-sm-4">
+						<div class="form-group fg-line">
+							<label for="MessengerName">Messenger Name </label> <input
+								data-ng-model="params.MessengerName" maxlength="11" type="text"
+								class="form-control input-sm" id="MessengerName"
+								placeholder="Messenger Name">
+						</div>
+					</div>
+
+
+
+
+					<div class="col-sm-4">
+						<div class="form-group fg-line">
+							<label for="Specialization">Specialization</label> <input
+								type="text" data-ng-model="params.Specialization"
+								id="Specialization" style="margin-top: -5px;"
+								uib-typeahead="sp for sp in SpecializationList | filter:$viewValue | limitTo:8"
+								class="form-control" placeholder="Start typing . . .">
+						</div>
+
+
+					</div>
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4">
+						<div class="form-group fg-line">
+							<label for="ConsultationFees">Consultation Fees [In Rs.]
+							</label> <input maxlength="4" type="text" class="form-control input-sm"
+								data-ng-model="params.ConsultationFees" id="ConsultationFees"
+								placeholder="Consultation Fees">
+						</div>
+					</div>
+
+					<!-- <div class="col-sm-4">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="CunsultationStartTime">Consultation Start
+									Timing </label>
+								<div class="select">
+									<select class="form-control"
+										data-ng-model="params.CunsultationStartTime">
+										<option value="{{item.value}}"
+											data-ng-repeat="item in TimeList">{{item.DisplayText}}
+										</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="CunsultationEndTime">Consultation End Timing
+								</label>
+								<div class="select">
+									<select class="form-control"
+										data-ng-model="params.CunsultationEndTime">
+										<option value="{{item.value}}"
+											data-ng-repeat="item in TimeList">{{item.DisplayText}}
+										</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div> -->
+
+					<div class="col-sm-4">
+						<div class="form-group fg-line">
+							<label for="PatientTreatRate">Patient Treat Rate [Hourly]
+							</label> <input maxlength="2" type="text" class="form-control input-sm"
+								data-ng-model="params.PatientTreatRate" id="PatientTreatRate"
+								placeholder="Patient Treat Rate">
+						</div>
+					</div>
+
+				</div>
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						<!-- <center>
+							<label>Working Days</label> </br> <label
+								class="checkbox checkbox-inline m-r-20"> <input
+								type="checkbox" value="option3"
+								data-ng-model="params.isSunday_O"> <i
+								class="input-helper"></i> Sunday
+							</label> <label class="checkbox checkbox-inline m-r-20"> <input
+								type="checkbox" value="option3"
+								data-ng-model="params.isMonday_O"> <i
+								class="input-helper"></i> Monday
+							</label> <label class="checkbox checkbox-inline m-r-20"> <input
+								type="checkbox" value="option3"
+								data-ng-model="params.isTuesday_O"> <i
+								class="input-helper"></i> Tuesday
+							</label> <label class="checkbox checkbox-inline m-r-20"> <input
+								type="checkbox" value="option3"
+								data-ng-model="params.isWednesday_O"> <i
+								class="input-helper"></i> Wednesday
+							</label> <label class="checkbox checkbox-inline m-r-20"> <input
+								type="checkbox" value="option3"
+								data-ng-model="params.isThursday_O"> <i
+								class="input-helper"></i> Thursday
+							</label> <label class="checkbox checkbox-inline m-r-20"> <input
+								type="checkbox" value="option3"
+								data-ng-model="params.isFriday_O"> <i
+								class="input-helper"></i> Friday
+							</label> <label class="checkbox checkbox-inline m-r-20"> <input
+								type="checkbox" value="option3"
+								data-ng-model="params.isSaturday_O"> <i
+								class="input-helper"></i> Saturday
+							</label>
+						</center> -->
+					</div>
+
+				</div>
+
+				<br /> <br /> <br />
+
+				<!-- <div class="row" data-ng-show="false">
+					<div class="col-sm-3 m-b-15">
+						<p class="f-500 c-black m-b-15">Doctor treatment details</p>
+						<select chosen multiple data-placeholder="Select a country..."
+							data-ng-model="params.DoctorTreatmentDetails" class="w-100">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="col-sm-5 m-b-15">
+						<div class="form-group fg-line">
+
+							<label for="ConsultationFees">Time Slots </label> <br /> <label
+								class="checkbox checkbox-inline m-r-20"> <input
+								data-ng-model="params.AllowedMorningShift_O" type="checkbox"
+								value="option3"> <i class="input-helper"></i> Morning
+							</label> <label class="checkbox checkbox-inline m-r-20"> <input
+								data-ng-model="params.AllowedNoonShift_O" type="checkbox"
+								value="option3"> <i class="input-helper"></i> Afternoon
+							</label> <label class="checkbox checkbox-inline m-r-20"> <input
+								data-ng-model="params.AllowedEvenigShift_O" type="checkbox"
+								value="option3"> <i class="input-helper"></i> Evening
+							</label>
+						</div>
+					</div>
+
+				</div> -->
+			</div>
+
+
+		</div>
+	</div>
+</div>

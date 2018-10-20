@@ -1,0 +1,114 @@
+<div class="container" data-ng-controller="appointmentCtrl as tctrl">
+	<div class="block-header">
+		<h2>My Appointments</h2>
+
+
+		<ul class="actions">
+			<li class="dropdown" uib-dropdown><a href="" uib-dropdown-toggle>
+					<i class="zmdi zmdi-more-vert"></i>
+			</a>
+
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="">Refresh</a></li>
+				</ul></li>
+		</ul>        
+
+	</div>
+
+ 
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				Todays Appointment <small>Total appointments :
+					{{AppointmentList.length}} </small>
+			</h2>
+			
+		</div>
+
+						<!-- data-ng-style="w.Priority == 'COMPLETE' ? {'background-color': '#C8E6C9'} : '' -->
+		<div class="card-body">
+		
+			<div class="table-responsive">
+			<table ng-table="tctrl.tableFilter" class="table table-striped table-vmiddle" show-filter="false">
+				<!-- <table ng-table="tableBasic"
+					class="table table-striped table-vmiddle"> -->
+					<tr data-ng-repeat="w in AppointmentList">
+						<td data-title="'ID'">{{ w.AppointmentID }}</td>
+						<td data-title="'Name'">
+							<a href="" data-ng-click="rowClick('PROCESS',w);">{{ w.PatientName }}</a>
+						</td>	 			
+						<td data-title="'Appointment Type'">{{ w.AppointmentType }}</td>						
+						<td data-title="'Age'">{{ w.Age }}</td>
+						<td data-title="'Date'">{{ w.date }}</td> 
+						<td data-title="'Priority'">{{ w.Priority }}</td>
+					<!-- 	<td data-title="'ACtion'"  >
+							<button class="btn btn-success waves-effect"
+								data-ng-click="open('sm')">
+								<i class="zmdi zmdi-more-vert"></i>
+							</button> 
+							<button data-ng-if="w.Priority != 'COMPLETE'"							
+								class="btn btn-success waves-effect" title="Complete"
+								data-ng-click="ChangePatientStatus(w);">
+								<i class="zmdi zmdi-check"></i>
+							</button> <label  data-ng-if="w.Priority == 'COMPLETE'">Completed</label>
+
+							<button class="btn btn-success waves-effect"
+								data-ng-click="OpenModal(w);">Change Priority</button>
+
+						</td> -->
+
+
+					</tr>
+				</table>
+
+
+			</div>
+		</div>
+	</div>
+
+ 
+	<!-- <div id="ChangeStatus" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+
+			Modal content
+			<div class="modal-content">
+
+				<div class="modal-body">
+				
+					
+					 <center><label>Change Status</<label></center>
+					 <hr/>
+					<p style="padding-left: 58px;">
+						<button class="btn"
+							style="background-color: #FFEB3B; width: 130px; margin-top: 5px;"
+							data-ng-click="ChangeStatusAndNavigate('PROCESS');">PROCESS</button>
+						<br />
+
+						<button class="btn"
+							style="background-color: #03A9F4; width: 130px; margin-top: 5px;"
+							data-ng-click="ChangeStatusAndNavigate('INVESTIGATION');">INVESTIGATION</button>
+						<br />
+
+						<button class="btn"
+							style="background-color: #f44336; width: 130px; margin-top: 5px;"
+							data-ng-click="ChangeStatusAndNavigate('DELAYED');">DELAYED</button>
+						<br />
+
+						<button class="btn"
+							style="background-color: #8BC34A; width: 130px; margin-top: 5px;"
+							data-ng-click="ChangeStatusAndNavigate('COMPLETE');">COMPLETE</button>
+					</p>
+
+					<br />
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+
+	</div> -->
+
+
+</div>

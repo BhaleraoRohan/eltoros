@@ -1,0 +1,64 @@
+<div class="container" data-ng-controller="patientCtrl">
+	<div class="block-header">
+		<h2>Patient Register</h2>
+		
+		<span class="pull-right" style="margin-top:-20px;">
+			<button class="btn btn-success waves-effect" data-ng-click="btnAddNew();">Add New Patient</button>
+		</span> 
+
+		<ul class="actions"> 
+			<li class="dropdown" uib-dropdown><a href="" uib-dropdown-toggle>
+					<i class="zmdi zmdi-more-vert"></i>
+			</a>
+
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="">Refresh</a></li> 
+				</ul></li>
+		</ul>
+
+	</div>
+
+	<!-- Step 1 -->
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				My Patient <small>Total : {{PatientList.length}}</small>
+			</h2>
+		</div>
+		<div class="card-body card-padding p-t-0"
+			data-ng-controller="DatepickerDemoCtrl">
+
+
+			<div class="table-responsive">
+				<table ng-table="tableBasic"
+					class="table table-striped table-vmiddle">
+					<tr data-ng-repeat="w in PatientList">    
+						<td data-title="'SRNO'">{{ $index+1 }}</td>
+						<td data-title="'Name'"  >
+						  
+						  <a href="" data-ng-click="ShowDetails(w)">{{ w.PatientName}}</a>
+						<!-- <a style="cursor:pointer;" data-ng-click=ShowDetails(w);  >
+								{{ w.PatientName}}</a> -->
+								</td>
+								
+						<td data-title="'Mobile Number'">{{w.MobileNumber}}</td>
+						<td data-title="'Total Visits'"><span class="badge">{{w.TotalVisits}}</span></td>
+						<!-- <td data-title="'Is Referal'">{{w.isReferal == 0 ? 'NO' : 'YES'}}</td> -->
+						<td data-title="'Last Visit Date'"  ><label title="{{w.LastVisitDate | date}}">{{w.LastVisitDate == null ? 'NA' : w.momentLastVisitDate }}</label></td>
+						<td data-title="'Registration Date'"><label title="{{w.CreatedOn | date}}">{{w.momentRegDate}}</label></td>
+
+
+					</tr>
+				</table>
+
+			</div>
+
+
+			<!-- <a data-ui-sref="app.patientDetails" ><i
+				class="zmdi zmdi-hotel"></i> Patient Details</a> -->
+
+
+		</div>
+	</div>
+</div>
+</div>

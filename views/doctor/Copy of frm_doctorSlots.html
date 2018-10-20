@@ -1,0 +1,942 @@
+<div class="container" data-ng-controller="slotManagerCtrl">
+	<div class="block-header">
+		<h2>Time Slots</h2> 
+	</div>
+		
+	<div class="card"> 
+		<div class="card-header">
+			<h2>Consultation Time Management</h2>
+		</div>
+
+		<div class="card-body card-padding p-t-0">
+ 
+			<div class="row">
+
+				<div class="col-sm-12">
+
+
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th rowspan="3"
+										style="background-color: #CFD8DC"; text-align: center;"><center>Day</center></th>
+									<th colspan="6" style="background-color: #C8E6C9"><center>Morning
+											(Slot/Time)</center></th>
+									<th colspan="6" style="background-color: #FFECB3"><center>Afternoon
+											(Slot/Time)</center></th>
+									<th colspan="5" style="background-color: #A1887F"><center>Evening
+											(Slot/Time)</center></th>
+								</tr>
+								<tr>
+									<th style="background-color: #C8E6C9">S- 1</th>
+									<th style="background-color: #C8E6C9">S - 2</th>
+									<th style="background-color: #C8E6C9">S - 3</th>
+									<th style="background-color: #C8E6C9">S - 4</th>
+									<th style="background-color: #C8E6C9">S - 5</th>
+									<th style="background-color: #C8E6C9">S - 6</th>
+									<th style="background-color: #FFECB3">S - 7</th>
+									<th style="background-color: #FFECB3">S - 8</th>
+									<th style="background-color: #FFECB3">S - 9</th>
+									<th style="background-color: #FFECB3">S - 10</th>
+									<th style="background-color: #FFECB3">S - 11</th>
+									<th style="background-color: #FFECB3">S - 12</th>
+									<th style="background-color: #A1887F">S - 13</th>
+									<th style="background-color: #A1887F">S - 14</th>
+									<th style="background-color: #A1887F">S - 15</th>
+									<th style="background-color: #A1887F">S - 16</th>
+								</tr>
+								<tr>
+									<th style="background-color: #C8E6C9">6-7</th>
+									<th style="background-color: #C8E6C9">7-8</th>
+									<th style="background-color: #C8E6C9">8-9</th>
+									<th style="background-color: #C8E6C9">9-10</th>
+									<th style="background-color: #C8E6C9">10-11</th>
+									<th style="background-color: #C8E6C9">11-12</th>
+									<th style="background-color: #FFECB3">12-13</th>
+									<th style="background-color: #FFECB3">13-14</th>
+									<th style="background-color: #FFECB3">14-15</th>
+									<th style="background-color: #FFECB3">15-16</th>
+									<th style="background-color: #FFECB3">16-17</th>
+									<th style="background-color: #FFECB3">17-18</th>
+									<th style="background-color: #A1887F">18-19</th>
+									<th style="background-color: #A1887F">19-20</th>
+									<th style="background-color: #A1887F">20-21</th>
+									<th style="background-color: #A1887F">21-22</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<!-- Select ALL  -->
+
+								<tr style="background-color: #CFD8DC" data-ng-if="false">
+									<td>
+										<center>
+											<b>Apply for All Day</b>
+										</center>
+									</td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="1"
+											data-ng-model="params.SelectAll_1"
+											data-ng-change="SelectAllSlots(1);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="2"
+											data-ng-model="params.SelectAll_2"
+											data-ng-change="SelectAllSlots(2);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="3"
+											data-ng-model="params.SelectAll_3"
+											data-ng-change="SelectAllSlots(3);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="4"
+											data-ng-model="params.SelectAll_4"
+											data-ng-change="SelectAllSlots(4);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="5"
+											data-ng-model="params.SelectAll_5"
+											data-ng-change="SelectAllSlots(5);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="6"
+											data-ng-model="params.SelectAll_6"
+											data-ng-change="SelectAllSlots(6);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="7"
+											data-ng-model="params.SelectAll_7"
+											data-ng-change="SelectAllSlots(7);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="8"
+											data-ng-model="params.SelectAll_8"
+											data-ng-change="SelectAllSlots(8);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="9"
+											data-ng-model="params.SelectAll_9"
+											data-ng-change="SelectAllSlots(9);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="10"
+											data-ng-model="params.SelectAll_10"
+											data-ng-change="SelectAllSlots(10);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="11"
+											data-ng-model="params.SelectAll_11"
+											data-ng-change="SelectAllSlots(11);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="12"
+											data-ng-model="params.SelectAll_12"
+											data-ng-change="SelectAllSlots(12);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="13"
+											data-ng-model="params.SelectAll_13"
+											data-ng-change="SelectAllSlots(13);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="14"
+											data-ng-model="params.SelectAll_14"
+											data-ng-change="SelectAllSlots(14);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="15"
+											data-ng-model="params.SelectAll_15"
+											data-ng-change="SelectAllSlots(15);"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="16"
+											data-ng-model="params.SelectAll_16"
+											data-ng-change="SelectAllSlots(16);"> <i
+											class="input-helper"></i>
+									</label></td>
+								</tr>
+
+								<!-- For Sunday -->
+								<tr>
+									<td style="background-color: #CFD8DC"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="params.isSunday_O"
+											data-ng-change="onDayStatusChange('isSunday');"> <i
+											class="input-helper"></i> Sunday
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="1"
+											data-ng-model="params.isSunday_1"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="2"
+											data-ng-model="params.isSunday_2"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="3"
+											data-ng-model="params.isSunday_3"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="4"
+											data-ng-model="params.isSunday_4"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="5"
+											data-ng-model="params.isSunday_5"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="6"
+											data-ng-model="params.isSunday_6"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="7"
+											data-ng-model="params.isSunday_7"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="8"
+											data-ng-model="params.isSunday_8"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="9"
+											data-ng-model="params.isSunday_9"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="10"
+											data-ng-model="params.isSunday_10"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="11"
+											data-ng-model="params.isSunday_11"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="12"
+											data-ng-model="params.isSunday_12"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="13"
+											data-ng-model="params.isSunday_13"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="14"
+											data-ng-model="params.isSunday_14"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="15"
+											data-ng-model="params.isSunday_15"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="16"
+											data-ng-model="params.isSunday_16"
+											data-ng-disabled="!params.isSunday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+								</tr>
+
+								<!-- For Monday -->
+								<tr>
+									<td style="background-color: #CFD8DC"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="params.isMonday_O"
+											data-ng-change="onDayStatusChange('isMonday');"> <i
+											class="input-helper"></i> Monday
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="1"
+											data-ng-model="params.isMonday_1"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="2"
+											data-ng-model="params.isMonday_2"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="3"
+											data-ng-model="params.isMonday_3"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="4"
+											data-ng-model="params.isMonday_4"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="5"
+											data-ng-model="params.isMonday_5"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="6"
+											data-ng-model="params.isMonday_6"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="7"
+											data-ng-model="params.isMonday_7"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="8"
+											data-ng-model="params.isMonday_8"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="9"
+											data-ng-model="params.isMonday_9"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="10"
+											data-ng-model="params.isMonday_10"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="11"
+											data-ng-model="params.isMonday_11"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="12"
+											data-ng-model="params.isMonday_12"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="13"
+											data-ng-model="params.isMonday_13"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="14"
+											data-ng-model="params.isMonday_14"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="15"
+											data-ng-model="params.isMonday_15"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="16"
+											data-ng-model="params.isMonday_16"
+											data-ng-disabled="!params.isMonday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+								</tr>
+
+
+								<!-- For TuesDay  -->
+								<tr>
+									<td style="background-color: #CFD8DC"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="params.isTuesday_O"
+											data-ng-change="onDayStatusChange('isTuesday');"> <i
+											class="input-helper"></i> Tuesday
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="1"
+											data-ng-model="params.isTuesday_1"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="2"
+											data-ng-model="params.isTuesday_2"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="3"
+											data-ng-model="params.isTuesday_3"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="4"
+											data-ng-model="params.isTuesday_4"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="5"
+											data-ng-model="params.isTuesday_5"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="6"
+											data-ng-model="params.isTuesday_6"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="7"
+											data-ng-model="params.isTuesday_7"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="8"
+											data-ng-model="params.isTuesday_8"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="9"
+											data-ng-model="params.isTuesday_9"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="10"
+											data-ng-model="params.isTuesday_10"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="11"
+											data-ng-model="params.isTuesday_11"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="12"
+											data-ng-model="params.isTuesday_12"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="13"
+											data-ng-model="params.isTuesday_13"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="14"
+											data-ng-model="params.isTuesday_14"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="15"
+											data-ng-model="params.isTuesday_15"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="16"
+											data-ng-model="params.isTuesday_16"
+											data-ng-disabled="!params.isTuesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+								</tr>
+
+								<!-- For Wednesday -->
+
+								<tr>
+									<td style="background-color: #CFD8DC"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="params.isWednesday_O"
+											data-ng-change="onDayStatusChange('isWednesday');"> <i
+											class="input-helper"></i> Wednesday
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="1"
+											data-ng-model="params.isWednesday_1"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="2"
+											data-ng-model="params.isWednesday_2"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="3"
+											data-ng-model="params.isWednesday_3"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="4"
+											data-ng-model="params.isWednesday_4"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="5"
+											data-ng-model="params.isWednesday_5"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="6"
+											data-ng-model="params.isWednesday_6"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="7"
+											data-ng-model="params.isWednesday_7"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="8"
+											data-ng-model="params.isWednesday_8"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="9"
+											data-ng-model="params.isWednesday_9"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="10"
+											data-ng-model="params.isWednesday_10"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="11"
+											data-ng-model="params.isWednesday_11"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="12"
+											data-ng-model="params.isWednesday_12"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="13"
+											data-ng-model="params.isWednesday_13"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="14"
+											data-ng-model="params.isWednesday_14"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="15"
+											data-ng-model="params.isWednesday_15"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="16"
+											data-ng-model="params.isWednesday_16"
+											data-ng-disabled="!params.isWednesday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+								</tr>
+
+								<!-- For Thursday -->
+
+								<tr>
+									<td style="background-color: #CFD8DC"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="params.isThursday_O"
+											data-ng-change="onDayStatusChange('isThursday');"> <i
+											class="input-helper"></i> Thursday
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="1"
+											data-ng-model="params.isThursday_1"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="2"
+											data-ng-model="params.isThursday_2"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="3"
+											data-ng-model="params.isThursday_3"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="4"
+											data-ng-model="params.isThursday_4"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="5"
+											data-ng-model="params.isThursday_5"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="6"
+											data-ng-model="params.isThursday_6"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="7"
+											data-ng-model="params.isThursday_7"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="8"
+											data-ng-model="params.isThursday_8"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="9"
+											data-ng-model="params.isThursday_9"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="10"
+											data-ng-model="params.isThursday_10"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="11"
+											data-ng-model="params.isThursday_11"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="12"
+											data-ng-model="params.isThursday_12"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="13"
+											data-ng-model="params.isThursday_13"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="14"
+											data-ng-model="params.isThursday_14"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="15"
+											data-ng-model="params.isThursday_15"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="16"
+											data-ng-model="params.isThursday_16"
+											data-ng-disabled="!params.isThursday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+								</tr>
+
+								<!-- For Friday -->
+
+								<tr>
+									<td style="background-color: #CFD8DC"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="params.isFriday_O"
+											data-ng-change="onDayStatusChange('isFriday');"> <i
+											class="input-helper"></i> Friday
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="1"
+											data-ng-model="params.isFriday_1"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="2"
+											data-ng-model="params.isFriday_2"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="3"
+											data-ng-model="params.isFriday_3"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="4"
+											data-ng-model="params.isFriday_4"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="5"
+											data-ng-model="params.isFriday_5"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="6"
+											data-ng-model="params.isFriday_6"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="7"
+											data-ng-model="params.isFriday_7"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="8"
+											data-ng-model="params.isFriday_8"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="9"
+											data-ng-model="params.isFriday_9"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="10"
+											data-ng-model="params.isFriday_10"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="11"
+											data-ng-model="params.isFriday_11"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="12"
+											data-ng-model="params.isFriday_12"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="13"
+											data-ng-model="params.isFriday_13"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="14"
+											data-ng-model="params.isFriday_14"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="15"
+											data-ng-model="params.isFriday_15"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="16"
+											data-ng-model="params.isFriday_16"
+											data-ng-disabled="!params.isFriday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+								</tr>
+
+								<!-- For Saturday -->
+
+								<tr>
+									<td style="background-color: #CFD8DC"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="params.isSaturday_O"
+											data-ng-change="onDayStatusChange('isSaturday');"> <i
+											class="input-helper"></i> Saturday
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="1"
+											data-ng-model="params.isSaturday_1"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="2"
+											data-ng-model="params.isSaturday_2"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="3"
+											data-ng-model="params.isSaturday_3"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="4"
+											data-ng-model="params.isSaturday_4"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="5"
+											data-ng-model="params.isSaturday_5"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="6"
+											data-ng-model="params.isSaturday_6"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="7"
+											data-ng-model="params.isSaturday_7"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="8"
+											data-ng-model="params.isSaturday_8"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="9"
+											data-ng-model="params.isSaturday_9"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="10"
+											data-ng-model="params.isSaturday_10"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="11"
+											data-ng-model="params.isSaturday_11"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="12"
+											data-ng-model="params.isSaturday_12"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="13"
+											data-ng-model="params.isSaturday_13"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="14"
+											data-ng-model="params.isSaturday_14"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="15"
+											data-ng-model="params.isSaturday_15"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+									<td><label class="checkbox checkbox-inline m-r-20">
+											<input type="checkbox" value="16"
+											data-ng-model="params.isSaturday_16"
+											data-ng-disabled="!params.isSaturday_O"> <i
+											class="input-helper"></i>
+									</label></td>
+								</tr>
+
+							</tbody>
+						</table>
+
+
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+					</div>

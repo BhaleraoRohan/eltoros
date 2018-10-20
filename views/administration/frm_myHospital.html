@@ -1,0 +1,59 @@
+<div class="container" data-ng-controller="hospitalCtrl">
+
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				My Hospital <small> </small>
+			</h2>
+		</div> 
+
+
+	<div class="card-body card-padding p-t-0">
+
+		<hr />
+		<div class="row">
+
+			<div class="col-sm-5">
+				<label>* Hospital Name : <b>{{HositalData.name}}</b></label> <br/>
+				<label>* Location
+					: {{HositalData.City}}, {{HositalData.State}},
+					{{HositalData.Country}}</label><br/> 
+					<label>* Contact Person :
+					{{HositalData.ContactPerson}}</label> <br/>
+					<label>* Contact Details 1 :
+					{{HositalData.Contact_1}}</label> <br/>
+					<label>* Contact Details 2 :
+					{{HositalData.Contact_2}}</label><br/>
+					 <label>* Email :
+					{{HositalData.Email}}</label> <br/>
+					<label>* Contract Start Date :
+					{{HositalData.ContractStartDate}}</label> <br/>
+					<label>* Contract End Date
+					: {{HositalData.ContractEndDate}}</label> <br/>
+					 
+
+			</div>
+			<div class="col-sm-5">
+			Your Geo Location : 
+				  <div id = "sample" style = "width:570px; height:580px;"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+</div>
+
+<!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuJFi3VidkOw-swMkBOvtAD18kxuFY9ok "></script>
+ 
+<script>
+         function loadMap() {
+			
+            var mapOptions = {
+               center:new google.maps.LatLng(20.593684, 78.96288), zoom:12,
+               mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+				
+            var map = new google.maps.Map(document.getElementById("sample"),mapOptions);
+         }
+      </script>

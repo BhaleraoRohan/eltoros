@@ -1,0 +1,109 @@
+<div class="container" data-ng-controller="lovCtrl as tctrl">
+	<div class="block-header">
+		<h2>LOV : List of Values</h2>
+		<span class="pull-right" style="margin-top: -20px;">
+			<button class="btn btn-success waves-effect"
+				data-ng-click="btnAddNew();">Add New</button>
+		</span>
+
+	</div>
+
+
+	<div class="card  card-padding p-t-0"
+		" data-ng-if="PageMode === 'list'">
+		<!-- <div class="card-header">
+			<h2>
+				Doctors <small> Active : {{DoctorList.length}} | Inactive :
+					0</small>
+			</h2>
+		</div> -->
+
+		<div class="card-body">
+			<div class="table-responsive">
+				<table ng-table="tctrl.tableFilter"
+					class="table table-striped table-vmiddle" show-filter="false">
+					<tr ng-repeat="w in lovList">
+						<td data-title="'#'">{{$index+1 }}</td>
+						<td data-title="'LOV Type'"  ><a
+							data-ng-click="rowClick(w.DoctorID);" href="">{{ w.LOVType
+								}}</a></td>
+						<td data-title="'Value'"  >{{
+							w.LOVValue}}</td>
+							<td data-title="'Doctor Name'"  >Dr. {{
+							w.name}}</td>
+
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="card " data-ng-if="PageMode === 'new'">
+		<div class="card-header">
+			<h2>{{lov.LOVType ? lov.LOVType : "LOV Master"}}</h2>
+		</div>
+		<br />
+		<div class="card-body card-padding p-t-0">
+
+			<div class="row"  >
+
+				<div class="col-sm-4">
+					<div class="form-group">
+						<div class="fg-line">
+							<label for="CunsultationStartTime">Select Doctor </label>
+							<div class="select">
+								<select class="form-control" data-ng-model="lov.DoctorID"
+									style="margin-top: -6px;">
+									<option value="{{item.UserID}}"
+										data-ng-repeat="item in DoctorList">{{item.name}}</option>
+								</select>
+							</div>
+						</div>
+					</div>      
+				</div>
+			</div>
+			<div data-ng-if="lov.DoctorID">
+				<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group fg-line">
+						<label>LOV Type</label>
+						<div class="select">
+							<select class="form-control" data-ng-model="lov.LOVType">
+								<option>Complaint Master</option>
+								<option>Examination Master</option>
+								<option>Diagnosis Master</option>
+								<option>Nutrition Master</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="form-group fg-line">
+						<label>Value</label> <input class="form-control" type="text"
+							maxlength="60" data-ng-model="lov.val" />
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<input type="checkbox" style="margin-top: 27px;"
+						data-ng-model="lov.isActive" /> Is Active
+				</div>
+			</div>
+			</div>
+			<hr />
+
+			<center>
+				<button class="btn btn-success waves-effect"
+					data-ng-click="btnCreate();">Add</button>
+				<button class="btn btn-warning waves-effect"
+					data-ng-click="btnCancel();">Cancel</button>
+			</center>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+</div>

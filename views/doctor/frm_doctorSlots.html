@@ -1,0 +1,175 @@
+<div class="container" data-ng-controller="slotManagerCtrl">
+	<div class="block-header">
+		<h2>Time Slots</h2> 
+	</div>
+		
+	<div class="card"> 
+		<div class="card-header">
+			<h2>Consultation Time Management</h2>
+		</div>
+
+		<div class="card-body card-padding p-t-0">
+ 
+			<div class="row">
+
+				<div class="col-sm-12">
+
+
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th rowspan="3"
+										style="background-color: #CFD8DC"; text-align: center;"><center>Day</center></th>
+									<th colspan="6" style="background-color: #C8E6C9"><center>Morning
+											(Slot/Time)</center></th>
+									<th colspan="6" style="background-color: #FFECB3"><center>Afternoon
+											(Slot/Time)</center></th>
+									<th colspan="5" style="background-color: #A1887F"><center>Evening
+											(Slot/Time)</center></th>
+								</tr>
+								<tr>
+									<th style="background-color: #C8E6C9">S- 1</th>
+									<th style="background-color: #C8E6C9">S - 2</th>
+									<th style="background-color: #C8E6C9">S - 3</th>
+									<th style="background-color: #C8E6C9">S - 4</th>
+									<th style="background-color: #C8E6C9">S - 5</th>
+									<th style="background-color: #C8E6C9">S - 6</th>
+									<th style="background-color: #FFECB3">S - 7</th>
+									<th style="background-color: #FFECB3">S - 8</th>
+									<th style="background-color: #FFECB3">S - 9</th>
+									<th style="background-color: #FFECB3">S - 10</th>
+									<th style="background-color: #FFECB3">S - 11</th>
+									<th style="background-color: #FFECB3">S - 12</th>
+									<th style="background-color: #A1887F">S - 13</th>
+									<th style="background-color: #A1887F">S - 14</th>
+									<th style="background-color: #A1887F">S - 15</th>
+									<th style="background-color: #A1887F">S - 16</th>
+								</tr>
+								<tr>
+									<th style="background-color: #C8E6C9">6-7</th>
+									<th style="background-color: #C8E6C9">7-8</th>
+									<th style="background-color: #C8E6C9">8-9</th>
+									<th style="background-color: #C8E6C9">9-10</th>
+									<th style="background-color: #C8E6C9">10-11</th>
+									<th style="background-color: #C8E6C9">11-12</th>
+									<th style="background-color: #FFECB3">12-13</th>
+									<th style="background-color: #FFECB3">13-14</th>
+									<th style="background-color: #FFECB3">14-15</th>
+									<th style="background-color: #FFECB3">15-16</th>
+									<th style="background-color: #FFECB3">16-17</th>
+									<th style="background-color: #FFECB3">17-18</th>
+									<th style="background-color: #A1887F">18-19</th>
+									<th style="background-color: #A1887F">19-20</th>
+									<th style="background-color: #A1887F">20-21</th>
+									<th style="background-color: #A1887F">21-22</th>
+								</tr>
+							</thead>
+							<tbody> 
+								<!-- For Sunday -->
+								<tr>
+									<td style="background-color: #CFD8DC">Sunday</td>
+									
+									<td style="background-color: #FFFFF " data-ng-repeat="slot in Sunday"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="slot.IsActive"
+											data-ng-change="ChangeSlotStatus(slot.SlotNumber,slot.IsActive,'Sunday');"> <i
+											class="input-helper"></i> {{slot.SlotNumber}}
+									</label></td>
+								</tr>
+								
+								<!-- For Monday -->
+								<tr>
+									<td style="background-color: #CFD8DC">Monday</td>
+									
+									<td style="background-color:  #FFFFF" data-ng-repeat="slot in Monday"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="slot.IsActive"
+											data-ng-change="ChangeSlotStatus(slot.SlotNumber,slot.IsActive,'Monday');"> <i
+											class="input-helper"></i> {{slot.SlotNumber}}
+									</label></td>
+								</tr>
+								
+								<!-- For Tuesday -->
+								<tr>
+									<td style="background-color: #CFD8DC">Tuesday</td>
+									
+									<td style="background-color: #FFFFF " data-ng-repeat="slot in Tuesday"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="slot.IsActive"
+											data-ng-change="ChangeSlotStatus(slot.SlotNumber,slot.IsActive,'Tuesday');"> <i
+											class="input-helper"></i> {{slot.SlotNumber}}
+									</label></td>
+								</tr>
+								
+								<!-- For Wednesday -->
+								<tr>
+									<td style="background-color: #CFD8DC">Wednesday</td>
+									
+									<td style="background-color: #FFFFF" data-ng-repeat="slot in Wednesday"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="slot.IsActive"
+											data-ng-change="ChangeSlotStatus(slot.SlotNumber,slot.IsActive,'Wednesday');"> <i
+											class="input-helper"></i> {{slot.SlotNumber}}
+									</label></td>
+								</tr>
+								
+								<!-- For Thursday -->
+								<tr>
+									<td style="background-color: #CFD8DC">Thursday</td>
+									
+									<td style="background-color: #FFFFF" data-ng-repeat="slot in Thursday"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="slot.IsActive"
+											data-ng-change="ChangeSlotStatus(slot.SlotNumber,slot.IsActive,'Thursday');"> <i
+											class="input-helper"></i> {{slot.SlotNumber}}
+									</label></td>
+								</tr>
+								
+								<!-- For Friday -->
+								<tr>
+									<td style="background-color: #CFD8DC">Friday</td>
+									
+									<td style="background-color: #FFFFF" data-ng-repeat="slot in Friday"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="slot.IsActive"
+											data-ng-change="ChangeSlotStatus(slot.SlotNumber,slot.IsActive.'Friday');"> <i
+											class="input-helper"></i> {{slot.SlotNumber}}
+									</label></td>
+								</tr>
+								
+								<!-- For Saturday -->
+								<tr>
+									<td style="background-color: #CFD8DC">Saturday</td>
+									
+									<td style="background-color: #FFFFF	" data-ng-repeat="slot in Saturday"><label
+										class="checkbox checkbox-inline m-r-20"> <input
+											type="checkbox" value="option3"
+											data-ng-model="slot.IsActive"
+											data-ng-change="ChangeSlotStatus(slot.SlotNumber,slot.IsActive,'Saturday');"> <i
+											class="input-helper"></i> {{slot.SlotNumber}}
+									</label></td>
+								</tr>
+								
+
+								 
+
+							</tbody>
+						</table>
+
+
+
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+					</div>

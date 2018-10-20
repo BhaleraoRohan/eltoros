@@ -1,0 +1,467 @@
+<div class="container" data-ng-controller="registrationCtrl">
+	<div class="block-header">
+		<h2>Hospital Registration</h2>
+
+		<ul class="actions">
+			<li><a href=""> <i class="zmdi zmdi-trending-up"></i>
+			</a></li>
+			<li><a href=""> <i class="zmdi zmdi-check-all"></i>
+			</a></li>
+			<li class="dropdown" uib-dropdown><a href="" uib-dropdown-toggle>
+					<i class="zmdi zmdi-more-vert"></i>
+			</a>
+
+				<ul class="dropdown-menu dropdown-menu-right">
+					<li><a href="">Refresh</a></li>
+					<li><a href="">Manage Widgets</a></li>
+					<li><a href="">Widgets Settings</a></li>
+				</ul></li>
+		</ul>
+
+	</div>
+
+	<!-- Step 1 -->
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				Step 1 : Hospital Information <small>Create and configured
+					your new hospital</small>
+			</h2>
+		</div>
+		<div class="card-body card-padding p-t-0"
+			data-ng-controller="DatepickerDemoCtrl">
+
+
+			<div class="row">
+
+				<div class="col-sm-4">
+					<div class="input-group ">
+						<span class="input-group-addon"><i
+							class="zmdi zmdi-city-alt"></i></span>
+						<div class="fg-line">
+							<input type="text" class="form-control"
+								placeholder="Hospital Name">
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="zmdi zmdi-code-smartphone"></i></span>
+						<div class="fg-line">
+							<input type="text" class="form-control"
+								placeholder="Hospital Short Code">
+						</div>
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="zmdi zmdi-account"></i></span>
+						<div class="fg-line">
+							<input type="text" class="form-control"
+								placeholder="Contact person name">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="zmdi zmdi-local-phone"></i></span>
+						<div class="fg-line">
+							<input type="text" class="form-control"
+								placeholder="Contact Number 1">
+						</div>
+					</div>
+
+				</div>
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="zmdi zmdi-local-phone"></i></span>
+						<div class="fg-line">
+							<input type="text" class="form-control"
+								placeholder="Contact Number 2">
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="zmdi zmdi-email"></i></span>
+						<div class="fg-line">
+							<input type="text" class="form-control"
+								placeholder="Email Address">
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
+
+			<div class="row">
+
+				<div class="col-sm-12">
+
+					</br>
+					<center>
+						<label>Activate For</label> </br> <label
+							class="radio radio-inline m-r-20"> <input type="radio"
+							name="inlineRadioOptions" value="option1"> <i
+							class="input-helper"></i> Trial
+						</label> <label class="radio radio-inline m-r-20"> <input
+							type="radio" name="inlineRadioOptions" value="option1"> <i
+							class="input-helper"></i> 1 Year
+						</label><label class="radio radio-inline m-r-20"> <input
+							type="radio" name="inlineRadioOptions" value="option1"> <i
+							class="input-helper"></i> 2 Year
+						</label><label class="radio radio-inline m-r-20"> <input
+							type="radio" name="inlineRadioOptions" value="option1"> <i
+							class="input-helper"></i> 3 Year
+						</label>
+					</center>
+				</div>
+
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-4">
+
+					<div class="date-picker input-group"
+						ng-class="{ 'is-opened': opened == true }">
+						<span class="input-group-addon"><i
+							class="zmdi zmdi-calendar ma-icon"></i></span>
+						<div class="fg-line" ng-class="{ 'fg-toggled': opened == true }">
+							<input ng-click="open($event, 'opened')" type="text"
+								class="form-control" uib-datepicker-popup="{{format}}"
+								show-weeks="false" ng-model="dtPopup" is-open="opened"
+								min-date="minDate" datepicker-options="dateOptions"
+								ng-required="true" close-text="Close" placeholder="Select Date" />
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon"><i
+							class="zmdi zmdi-account"></i></span>
+						<div class="fg-line">
+							<input type="text" class="form-control"
+								placeholder="Validate Till date">
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			</br>
+
+
+			<div class="row">
+				<div class="col-sm-8">
+
+					<div class="input-group">
+						<span class="input-group-addon"><i class="zmdi zmdi-coffee"></i></span>
+						<div class="fg-line">
+							<textarea class="form-control" data-auto-size
+								placeholder="Address"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			</br>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="zmdi zmdi-pin"></i></span>
+						<div class="fg-line">
+							<input type="text" class="form-control" placeholder="Lat">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="zmdi zmdi-pin"></i></span>
+						<div class="fg-line">
+							<input type="text" class="form-control" placeholder="Long">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			</br>
+			<div class="row">
+
+				<div class="col-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon"><i class="zmdi zmdi-http"></i></span>
+						<div class="fg-line">
+							<input type="text" class="form-control" placeholder="Website">
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+			</br>
+
+			<div class="row">
+				<div class="col-sm-12">
+
+					<div class="input-group">
+						<span class="input-group-addon"><i class="zmdi zmdi-labels"></i></span>
+						<div class="fg-line">
+							<textarea class="form-control" data-auto-size
+								placeholder="Any comment..."></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			</br> </br>
+
+
+		</div>
+	</div>
+
+
+	<!-- Step 2 -->
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				Step 2 : Services <small>Initialize services</small>
+			</h2>
+		</div>
+
+		<div class="card-body card-padding">
+
+			<br />
+
+			<div class="row m-b-20">
+				<div class="col-sm-4 m-b-20">
+					<div class="toggle-switch" data-ts-color="red">
+						<label for="ts1Laboratory" class="ts-label">Laboratory</label> <input
+							id="ts1Laboratory" type="checkbox" hidden="hidden"> <label
+							for="ts1Laboratory" class="ts-helper"></label>
+					</div>
+				</div>
+			</div>
+			<div class="row m-b-20">
+				<div class="col-sm-4 m-b-20">
+					<div class="toggle-switch" data-ts-color="blue">
+						<label for="ts1Investigation" class="ts-label">Investigation
+							Section </label> <input id="ts1Investigation" type="checkbox"
+							hidden="hidden"> <label for="ts1Investigation"
+							class="ts-helper"></label>
+					</div>
+				</div>
+			</div>
+			<div class="row m-b-20">
+				<div class="col-sm-4 m-b-20">
+					<div class="toggle-switch" data-ts-color="green">
+						<label for="ts1Messeging" class="ts-label">Messeging
+							Service</label> <input id="ts1Messeging" data-ng-model="messeging"
+							type="checkbox" hidden="hidden"> <label
+							for="ts1Messeging" class="ts-helper"></label>
+					</div>
+				</div>
+				<div class="col-sm-4" data-ng-if="messeging">
+					<div class="input-group ">
+						<span class="input-group-addon"><i
+							class="zmdi zmdi-collection-item"></i></span>
+						<div class="fg-line">
+							<input type="number" class="form-control" min="500" max="5000"
+								placeholder="Total SMS">
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="row m-b-20">
+				<div class="col-sm-4 m-b-20">
+					<div class="toggle-switch" data-ts-color="amber">
+						<label for="ts1MissedCall" class="ts-label">Missed Call
+							Service</label> <input id="ts1MissedCall" type="checkbox" hidden="hidden">
+						<label for="ts1MissedCall" class="ts-helper"></label>
+					</div>
+				</div>
+			</div>
+			<div class="row m-b-20">
+				<div class="col-sm-4 m-b-20">
+					<div class="toggle-switch" data-ts-color="purple">
+						<label for="ts1Reporting" class="ts-label">Advanced
+							Reporting</label> <input id="ts1Reporting" type="checkbox"
+							hidden="hidden"> <label for="ts1Reporting"
+							class="ts-helper"></label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<!-- Step 3 -->
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				Step 3 : Machine Configuration <small>Setup for machine</small>
+			</h2>
+		</div>
+
+		<div class="card-body card-padding">
+
+			<br />
+
+			<div class="row">
+
+				<div class="col-sm-6">
+					<div class="input-group ">
+						<div class="fg-line">
+							<input type="text" class="form-control" placeholder="Main Headline Text">
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-6">
+					<div class="input-group ">
+						<div class="fg-line">
+							<input type="text" class="form-control" placeholder="Headline Second Section Text">
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-6">
+					<div class="input-group ">
+						<div class="fg-line">
+							<input type="text" class="form-control" placeholder="LCD Boot Message">
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="input-group ">
+						<div class="fg-line">
+							<input type="text" class="form-control" placeholder="Hospital City">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-6">
+					<div class="input-group ">
+						<div class="fg-line">
+							<input type="text" class="form-control" placeholder="Hospital URL">
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			 
+			 
+			 <!-- IMP :  Add Doctor count and respective names in the doctor module  -->
+			 
+			 <!--  A] -->
+			 <!-- Name | Middlename | Age | Gender | Phone NUmber | City | Doctor | Message-->
+			 <!-- add on/off section to restrict receipt parameters -->
+				
+			 <!--  B] -->
+			 <!-- Add toggle button for on/off services 1] SMS 2] Missed Call  -->
+
+
+		</div>
+
+	</div>
+
+	<!-- Step 4 -->
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				Overview : Finalize the setup <small>Hospital Summary</small>
+			</h2>
+
+			<br>
+
+			<div class="row m-b-20">
+				<div class="col-sm-4 m-b-20">
+					<div class="toggle-switch" data-ts-color="red">
+						<label for="ts1MakeActive" class="ts-label">Make Active </label> <input
+							id="ts1MakeActive" type="checkbox" hidden="hidden"> <label
+							for="ts1MakeActive" class="ts-helper"></label>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="card-body card-padding">
+ 	
+			<div class="row  ">
+				<div class="col-sm-4 m-b-25">
+					<p class="c-black">Summary</p>
+
+					<ul class="clist clist-check">
+						<li>Lorem ipsum dolor sit amet</li>
+						<li>Consectetur adipiscing elit</li>
+						<li>Integer molestie lorem at massa</li>
+						<li>Facilisis in pretium nisl aliquet</li>
+						<li>Nulla volutpat aliquam velit</li>
+						<li>Phasellus iaculis neque</li>
+						<li>Purus sodales ultricies</li>
+						<li>Vestibulum laoreet porttitor sem</li>
+						<li>Ac tristique libero volutpat at</li>
+						<li>Faucibus porta lacus fringilla vel</li>
+						<li>Aenean sit amet erat nunc</li>
+						<li>Eget porttitor lorem</li>
+					</ul>
+				</div>
+
+			</div>
+			<hr>
+
+			<center>
+				<div class="btn-demo">
+					<button class="btn btn-danger waves-effect">Cancel</button>
+					<button class="btn btn-success waves-effect">Create</button>
+				</div>
+			</center>
+
+		</div>
+	</div>
+
+
+
+
+
+</div>

@@ -1,0 +1,38 @@
+ <div class="container" data-ng-controller="staffCtrl">
+	<div class="block-header">
+		<h2>Staff Register</h2> 
+		<span class="pull-right" style="margin-top:-20px;">
+			<button class="btn btn-success waves-effect" data-ng-click="alert('To be implement...')">Add Staff Member</button>
+		</span> 
+
+	</div>
+ 
+	
+	<div class="card">
+        <div class="card-header">
+            <h2>
+				Staff  <small>  </small>				 
+			</h2>
+        </div>
+                
+        <div class="card-body">
+            <div class="table-responsive">
+                 <table ng-table="tctrl.tableFilter" class="table table-striped table-vmiddle" show-filter="false">
+                    <tr ng-repeat="w in StaffList">
+                        <td data-title="'#'"  >
+                            {{$index+1 }}
+                        </td>
+                        <td data-title="'Name'" filter="{ 'name': 'text' }">
+                            <a  href="">{{ w.UserName  }}</a>
+                        </td>
+                        
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+	
+	
+
+
+</div>

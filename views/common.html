@@ -1,0 +1,27 @@
+
+<div data-ng-controller="homeCtrl">
+	<header id="header" data-current-skin={{mactrl.currentSkin}}
+		data-ng-include src="'template/EltorosHeader.html'"
+		data-ng-controller="headerCtrl as hctrl"></header>
+
+	<section id="main">
+		<!-- <aside id="sidebar" data-ng-include src="'template/sidebar-left_orgnl.html'" data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside> -->
+		<aside id="sidebar" data-ng-include src="'template/EltorosMenu.html'"
+			data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+		<aside id="chat" data-ng-include src="'template/chat.html'"
+			data-ng-class="{ 'toggled': mactrl.sidebarToggle.right === true }"></aside>
+
+		<section id="content" class="page-view" data-ui-view></section>
+
+	</section>
+
+	<footer id="footer" data-ng-include="'template/Eltorosfooter.html'"></footer>
+
+	<!-- 
+	<footer id="footer" data-ng-include src="'template/footer.html'"></footer> -->
+
+
+</div>
+
+

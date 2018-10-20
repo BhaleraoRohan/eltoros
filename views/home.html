@@ -1,0 +1,109 @@
+ <div data-ng-controller="homeCtrl">
+
+	<header id="header" data-current-skin={{mactrl.currentSkin}}
+		data-ng-include="'template/EltorosHeader.html'"
+		data-ng-controller="headerCtrl as hctrl"></header>
+
+	<section id="main">
+		<aside id="sidebar" data-ng-include="'template/EltorosMenu.html'"
+			data-ng-class="{ 'toggled': mactrl.sidebarToggle.left === true }"></aside>
+
+		<aside id="chat" data-ng-include="'template/chat.html'"
+			data-ng-class="{ 'toggled': mactrl.sidebarToggle.right === true }"></aside>
+
+		<section id="content">
+
+			<div class="container">
+				<div class="block-header">
+					<h2>Dashboard : {{data[0].HospitalName}}</h2>
+
+					<ul class="actions">
+						 
+						<li class="dropdown" uib-dropdown><a href=""
+							uib-dropdown-toggle> <i class="zmdi zmdi-more-vert"></i>
+						</a>
+
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li><a href="">Refresh</a></li> 
+							</ul></li>
+					</ul>
+
+				</div>
+
+				<div class="dash-widgets">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							<div id="site-visits" class="dash-widget-item bgm-teal">
+								<div class="dash-widget-header">
+									<div class="p-20">
+										<div class="dash-widget-visits" data-sparkline-line></div>
+									</div>
+									<div class="dash-widget-title">Todays Appointmentsasda</div>
+								</div>
+
+								<div class="p-20">
+{{AppointmentDetailList.length}} 
+									<div data-ng-repeat="data in AppointmentDetailList">
+										<small>Dr. {{data.name}}</small>
+										<h3 class="m-0 f-400">{{data.TotalAppointment}}</h3>
+									</div>
+									
+									<div data-ng-if="AppointmentDetailList.length === 0">
+										<small>No doctor registered.</small>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-9 col-sm-6">
+							<div class="card">
+								<div class="card-header">
+									<h2>
+										Statistics <small>Vestibulum purus quam scelerisque, mollis nonummy metus</small>
+									</h2>
+								</div>
+								<div class="card-body">
+
+									<div class="chart-edge">
+										<div class="flot-chart" data-curvedline-chart></div>
+									</div>
+									<!-- <table class="table table-striped   table-responsive">
+										<thead>
+											<tr>
+												<th>Doctor</th>
+												<th title="Todays appointment count.">Count</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr data-ng-repeat="data in AppointmentDetailList">
+												<td>{{data.name}}</td>
+												<td title="Todays appointment count.">{{data.TotalAppointment}}</td>
+											</tr>
+										</tbody>
+									</table> -->
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+
+
+
+
+
+			</div>
+		</section>
+	</section>
+	
+	
+	
+	<footer id="footer" data-ng-include="'template/Eltorosfooter.html'"></footer>
+</div>
+
+
+
+
+ 

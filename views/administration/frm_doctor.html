@@ -1,0 +1,61 @@
+<div class="container" data-ng-controller="doctorCtrl as tctrl">
+	<div class="block-header">
+		<h2>Doctor Master</h2>
+		<span class="pull-right" style="margin-top: -20px;">
+			<button class="btn btn-success waves-effect"
+				data-ng-click="btnAddNew();">Add New Doctor</button>
+		</span>
+
+	</div>
+
+
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				Doctors <small> Active : {{DoctorList.length}} | Inactive :
+					0</small>
+			</h2>
+		</div>
+
+		<div class="card-body">
+			<div class="table-responsive">
+				<table ng-table="tctrl.tableFilter"
+					class="table table-striped table-vmiddle" show-filter="false">
+					<tr ng-repeat="w in DoctorList">
+						<td data-title="'#'">{{$index+1 }}</td>
+						<td data-title="'Name'" filter="{ 'name': 'text' }"><a
+							data-ng-click="rowClick(w.DoctorID);" href="">Dr. {{ w.name
+								}}</a></td>
+						<td data-title="'Contact Number'" filter="{ 'Contact_1': 'text' }">
+							{{ w.Contact_1 }}</td>
+						<td data-title="'Specialization'"
+							filter="{ 'Specialization': 'text' }">{{ w.Specialization }}
+						</td>
+						<td data-title="'CunsultationStartTime'"
+							filter="{ 'ConsultationStartTime': 'text' }">{{
+							w.CunsultationStartTime }}</td>
+					</tr>
+				</table>
+			</div>
+
+			<div  >
+				<p data-ng-repeat="w in AppointmentList">
+					<label data-ng-click="rowClick1('PROCESS',w);">{{
+						w.PatientName }}</label> 
+						
+					 	
+				</p>
+			</div>
+
+
+
+
+
+
+		</div>
+	</div>
+
+
+
+
+</div>

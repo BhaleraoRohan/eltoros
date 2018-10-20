@@ -1,0 +1,478 @@
+<div class="container">
+	<div class="block-header">
+		<h2>Patient Treatment <span data-ng-if="isAlreadyTreated == true">(View)</span></h2>
+
+	</div>
+
+
+	<div class="card" data-ng-show="isRequestedInvestigation">
+		<div class="pull-Left" style="margin-top: -20px; padding: 10px;">
+			<button class="btn btn-warning waves-effect"
+				data-ng-click="btnBackIn();">
+				<i class="zmdi zmdi-arrow-back"></i> Cancel
+			</button>
+			<button class="btn btn-success waves-effect"
+				data-ng-click="btnInvestigationAppointment();">Appoint</button>
+		</div>
+		<div>
+			<hr style="margin-top: 10px !important;" />
+		</div>
+
+		<div class="card-header">
+			<h4>
+				Patient Name : {{patientparams.FirstName | uppercase}}
+				{{patientparams.MiddleName | uppercase}} {{patientparams.LastName |
+				uppercase}} <small> </small>
+			</h4>
+
+			<!-- <div class="row">
+				<div class="col-sm-4">
+					<div class="form-group fg-line">
+						<label>Investigation Type</label>
+						<select class="form-control">
+							<option>Image</option>
+							<option>Lab</option>
+						</select>										 
+					</div>
+				</div> 
+			</div>  -->
+
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="form-group fg-line">
+						<label>Select Investigation</label> <select class="form-control"
+							data-ng-model="invname">
+							<option value="{{item.TestID}}"
+								data-ng-repeat="item in InvestigationList">{{item.TestName}} - ({{item.testType}})</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<button class="btn btn-success waves-effect"
+						style="margin-top: 25px;" data-ng-click="btnPatientInvList();">
+						Add</button>
+				</div>
+
+				<div class="col-sm-5" data-ng-if="false">
+					<div class="form-group">
+						<label>Comment</label>
+						<textarea class="form-control" style="resize: none" rows="5">
+						</textarea>
+					</div>
+				</div>
+			</div>
+			<p>
+			<ul>
+				<li data-ng-repeat="item in patientInvList">{{item.TestName}}</li>
+			</ul>
+			</p>
+
+		</div>
+	</div>
+
+
+
+
+	<div class="card" data-ng-show="!isRequestedInvestigation">
+		<div class="pull-Left" style="margin-top: -20px; padding: 10px;">
+			<button class="btn btn-warning waves-effect"
+				data-ng-click="btnBack();">
+				<i class="zmdi zmdi-arrow-back"></i> Cancel
+			</button>
+
+			<div class="btn-group dropdown open" uib-dropdown="" style="" data-ng-if="isAlreadyTreated == false">
+				<button type="button"
+					class="btn btn-success dropdown-toggle waves-effect"
+					uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="true">
+					Complete <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#" data-ng-click="btnSubmit();">Complete</a></li>
+					<li><a href="#"
+						data-ng-click="btnCompleteAndNext('COMPLETE');">Complete and
+							Get Next</a></li>
+
+				</ul>
+			</div>
+
+			<button class="btn btn-success waves-effect"
+				data-ng-click="btnInvestigation();" data-ng-if="isAlreadyTreated == false">
+				<i class="zmdi zmdi zmdi-puzzle-piece"></i> Appoint for
+				Investigation
+			</button>
+
+			<!-- <div class="btn-group dropdown open" uib-dropdown="" style="">
+				<button type="button"
+					class="btn btn-primary dropdown-toggle waves-effect"
+					uib-dropdown-toggle="" aria-haspopup="true" aria-expanded="true">
+					Appoint <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#" data-ng-click="btnCompleteAndNext('INVESTIGATION_I')">For Imaging</a></li>
+					<li><a href="#" data-ng-click="btnCompleteAndNext('INVESTIGATION_L');">For Lab</a></li>
+				</ul>
+			</div> -->
+
+		</div>
+
+		<div>
+			<hr style="margin-top: 10px !important;" />
+		</div>
+		<div class="card-header">
+			<h4>
+				Patient Name : {{patientparams.FirstName | uppercase}}
+				{{patientparams.MiddleName | uppercase}} {{patientparams.LastName |
+				uppercase}} <small> </small>
+			</h4>
+			<div class="row">
+				<div class="col-sm-6">
+					<label><b>Contact Number</b> :
+						{{patientparams.MobileNumber}} </label> &nbsp;&nbsp; <label><b>City</b>
+						: {{patientparams.City}} </label>&nbsp;&nbsp; <label><b>Age</b> :
+						{{patientparams.Age}} </label> </br> <label><span> <b>Date</b> :
+							{{date | date:'dd-MM-yyyy'}}
+					</span></label>
+				</div>
+
+				<div class="col-md-3 col-sm-3 m-b-20" style="margin-top: -25px;" data-ng-if="isAlreadyTreated == false">
+					<ul class="list-group">
+						<li class="list-group-item" style="background-color: #CDDC39;"><span
+							style="background-color: #CDDC39;" class="badge">Done/In
+								Process</span> Imaging</li>
+					</ul>
+				</div>
+				<div class="col-md-3 col-sm-3 m-b-20" style="margin-top: -25px;" data-ng-if="isAlreadyTreated == false">
+					<ul class="list-group">
+						<li class="list-group-item" style="background-color: #FFC107;"><span
+							style="background-color: #FFC107;" class="badge">Done/In
+								Process</span> Lab</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="card-body card-padding p-t-0">
+
+			<div class="row">
+				<div class="col-sm-12">
+
+					<tabset> <tab heading="Treatment" active="true">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="FirstName">Height</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.Height"
+									placeholder="Height">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="FirstName">Weight</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.Weight"
+									placeholder="Weight">
+							</div>
+						</div>
+
+						<div class="col-sm-2">
+							<div class="form-group fg-line">
+								<label for="FirstName">Systolic</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.systolic"
+									placeholder="BP">
+							</div>
+						</div>
+						<div class="col-sm-2">
+							<div class="form-group fg-line">
+								<label for="FirstName">Diastolic</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.diastolic"
+									placeholder="BP">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="FirstName">Pulse</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.Pulse"
+									placeholder="Pulse">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="FirstName">SPO2</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.SPO2"
+									placeholder="SPO2">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="fg-line">
+									<div class="select">
+										<label><span class="badge" style="font-size: initial;background-color: #BF360C !important">Complaint
+												Details <small>({{500-params.Complaint.length}}/500)</small>
+										</span></label> <select id="sel_Complaint" class="form-control input-sm"
+											style="margin-top: -6px; width: 100%;"
+											data-ng-model="crrComplaint">
+											<option value="{{item.id}"
+												data-ng-repeat="item in DoctorLOVList"
+												data-ng-if="item.LOVType == 'Complaint Master'">{{item.LOVValue}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<span class="pull-right"><button
+									class="btn bgm-amber btn-icon waves-effect waves-circle"
+									style="margin-top: 0 px;" data-ng-click="onComplaintSelect();">
+									<i class="zmdi zmdi-check"></i>
+								</button>
+								<button
+									class="btn btn-default btn-icon waves-effect waves-circle"
+									style="margin-top: 0 px;"
+									data-ng-click="OpenModal('Complaint Master')">
+									<i class="zmdi zmdi-plus"></i>
+								</button></span>
+							<textarea class="form-control" id="Complaint"
+								data-ng-model="params.Complaint" rows="7"
+								placeholder="Select or Start typing..."></textarea>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="fg-line">
+									<div class="select">
+										<label><span class="badge" style="font-size: initial;background-color: #BF360C !important">Examination
+												Details <small>({{500-params.Examination.length}}/500)</small>
+										</span></label> <select id="sel_Examination" class="form-control input-sm"
+											style="margin-top: -6px; width: 100%;"
+											data-ng-model="crrExamination">
+											<option value="{{item.id}"
+												data-ng-repeat="item in DoctorLOVList"
+												data-ng-if="item.LOVType == 'Examination Master'">{{item.LOVValue}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<span class="pull-right"><button
+									class="btn bgm-amber btn-icon waves-effect waves-circle"
+									style="margin-top: 0 px;"
+									data-ng-click="onExaminationSelect();">
+									<i class="zmdi zmdi-check"></i>
+								</button>
+								<button
+									class="btn btn-default btn-icon waves-effect waves-circle"
+									style="margin-top: 0 px;"
+									data-ng-click="OpenModal('Examination Master')">
+									<i class="zmdi zmdi-plus"></i>
+								</button></span>
+							<textarea class="form-control" id="Examination"
+								data-ng-model="params.Examination" rows="7"
+								placeholder="Select or Start typing..."></textarea>
+						</div>
+					</div>
+					<br />
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="fg-line">
+									<div class="select">
+										<label><span class="badge" style="font-size: initial;background-color: #BF360C !important">Diagnosis
+												Details<small>({{500-params.Diagnosis.length}}/500)</small>
+										</span></label> <select id="sel_Diagnosis" class="form-control input-sm"
+											style="margin-top: -6px; width: 100%;"
+											data-ng-model="crrDiagnosis">
+											<option value="{{item.id}"
+												data-ng-repeat="item in DoctorLOVList"
+												data-ng-if="item.LOVType == 'Diagnosis Master'">{{item.LOVValue}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<span class="pull-right"><button
+									class="btn bgm-amber btn-icon waves-effect waves-circle"
+									style="margin-top: 0 px;" data-ng-click="onDiagnosisSelect();">
+									<i class="zmdi zmdi-check"></i>
+								</button>
+								<button
+									class="btn btn-default btn-icon waves-effect waves-circle"
+									style="margin-top: 0 px;"
+									data-ng-click="OpenModal('Diagnosis Master')">
+									<i class="zmdi zmdi-plus"></i>
+								</button></span>
+							<textarea class="form-control" id="Diagnosis"
+								data-ng-model="params.Diagnosis" rows="7"
+								placeholder="Select or Start typing..."></textarea>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="fg-line">
+									<div class="select">
+										<label><span class="badge" style="font-size: initial;background-color: #BF360C !important">Nutrition/Diet
+												Details <small>({{500-params.Nutrition.length}}/500)</small>
+										</span></label> <select id="sel_Nutrition" class="form-control input-sm"
+											style="margin-top: -6px; width: 100%;"
+											data-ng-model="crrNutrition">
+											<option value="{{item.id}"
+												data-ng-repeat="item in DoctorLOVList"
+												data-ng-if="item.LOVType == 'Nutrition Master'">{{item.LOVValue}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<span class="pull-right"><button
+									class="btn bgm-amber btn-icon waves-effect waves-circle"
+									style="margin-top: 0 px;" data-ng-click="onNutritionSelect();">
+									<i class="zmdi zmdi-check"></i>
+								</button>
+								<button
+									class="btn btn-default btn-icon waves-effect waves-circle"
+									style="margin-top: 0 px;"
+									data-ng-click="OpenModal('Nutrition Master')">
+									<i class="zmdi zmdi-plus"></i>
+								</button></span>
+							<textarea class="form-control" id="Nutrition"
+								data-ng-model="params.Nutrition" rows="7"
+								placeholder="Select or Start typing..."></textarea>
+						</div>
+					</div>
+					<br />
+					<div class="row" data-ng-controller="DatepickerDemoCtrl">
+						<div class="col-sm-6">
+							<div class="form-group fg-line">
+								<label for="FirstName">Next Visit Date</label>
+								<div class="date-picker input-group"
+									data-ng-class="{ 'is-opened': opened == true }">
+
+									<div class="fg-line"
+										ng-class="{ 'fg-toggled': opened == true }">
+										<input data-ng-click="open($event, 'opened')" type="text"
+											class="form-control" uib-datepicker-popup="{{format}}"
+											show-weeks="false" data-ng-model="params.NextVisitDate"
+											is-open="opened" min-date="minDate"
+											datepicker-options="dateOptions" ng-required="true"
+											close-text="Close" placeholder="Select Next Visit Date" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+
+					</tab> <tab heading="History And Examination" active="true">
+
+					<h5>
+						<span data-ng-if="PatientHistory == 0"> : This is his/her
+							first visit.</span>
+					</h5>
+
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-10">
+							<div class="alert alert-success" role="alert" 
+								data-ng-repeat="data in PatientHistory track by data.id | object2Array | orderBy:'-date'"
+								style="padding-right: 10px; padding-left: 10px;background-color:#A1887F !important">
+								<div>
+									<div class="clearfix"></div>
+									<!-- <h4>{{$index+1}}. &nbsp;&nbsp;Time slot : {{data.TimeSlot}} &nbsp;|&nbsp; (Dr. {{data.DoctorName}})<span class="pull-right" >Date : {{data.date}}</span> </h4> -->
+									<h4>
+										{{$index+1}}. &nbsp;&nbsp;Appointed to Dr. {{data.DoctorName}}<span
+											class="pull-right" ><small style="color:white !important">Date : {{data.date}}&nbsp;&nbsp; | &nbsp;
+											
+											Next Visit Date: {{data.NextVisitDate}}</small>
+											</span>
+									</h4>
+									<hr style="background-color: white; margin-top: 2px;" />
+									<div class="row">
+										<div class="col-sm-3" >
+											<small style="color:white !important">
+												<i class="zmdi zmdi-mail-send zmdi-hc-fw"></i>&nbsp;<label><b>Height</b> : {{data.Height ? data.Height : "data.Height"}}</label> <br/>
+												<i class="zmdi zmdi-mail-send zmdi-hc-fw"></i>&nbsp;<label><b>Weight</b> : {{data.weight ? data.weight : "NA"}}</label><br />
+												<i class="zmdi zmdi-mail-send zmdi-hc-fw"></i>&nbsp;<label><b>Systolic</b> : {{data.systolic ? data.systolic : "NA"}} 
+												| <b>Diastolic</b> : {{data.diastolic ? data.diastolic : "NA"}}</label><br />
+												<i class="zmdi zmdi-mail-send zmdi-hc-fw"></i>&nbsp;<label><b>Pulse</b> : {{data.Pulse ? data.Pulse : "NA"}}</label><br />
+												<i class="zmdi zmdi-mail-send zmdi-hc-fw"></i>&nbsp;<label><b>SPO2</b> : {{data.SPO2 ? data.SPO2 : "NA"}}</label> <br />
+											</small>
+										</div>
+										<div class="col-sm-9" style="border-left-style: groove;border-color: white;">
+											<small style="color:white !important">
+												<i class="zmdi zmdi-mail-send zmdi-hc-fw"></i>&nbsp;<label style="color: white;">Diagnosis&nbsp;&nbsp;: </label><label style="color: white;">{{data.DiagnosisDetails ? data.DiagnosisDetails : "Not Given"}}</label><br/>
+												<i class="zmdi zmdi-mail-send zmdi-hc-fw"></i>&nbsp;<label style="color: white;">Complaints&nbsp; : </label><label style="color: white;">{{data.ComplaintDetails ? data.ComplaintDetails : "Not Given"}}</label><br/>
+												<i class="zmdi zmdi-mail-send zmdi-hc-fw"></i>&nbsp;<label style="color: white;">Examination : </label><label style="color: white;">{{data.ExaminationDetails ? data.ExaminationDetails : "Not Given"}}</label><br/>
+												<i class="zmdi zmdi-mail-send zmdi-hc-fw"></i>&nbsp;<label style="color: white;">Nutrition&nbsp;&nbsp;: </label><label style="color: white;">{{data.NutritionDetails ? data.NutritionDetails : "Not Given"}}</label><br/>
+											</small>
+										</div>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-1"></div>
+					</div>
+
+					</tab> </tabset>
+
+					<br /> <br /> <br /> <br />
+					<hr />
+
+
+					<div class="row" data-ng-show="false">
+						<div class="col-sm-10">
+							<div class="form-group">
+								<div class="fg-line">
+									<label for="CunsultationStartTime">Complaints </label>
+									<div class="select">
+										<select class="form-control"><option
+												value="{{item.id}" data-ng-repeat="item in ComplaintList">{{item.name}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+
+
+<div class="modal fade" id="LOVModal" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">LOV : {{lov.LOVType}}</h4>
+			</div>
+			<div class="modal-body">
+				<p>Enter Value </p>
+			</div>
+			<div class="row" >
+				<div class="col-sm-1"></div>
+				<div class="col-sm-10">
+					<div class="form-group fg-line">  <input   type="text"
+							maxlength="60" data-ng-model="lov.val" />
+					</div>
+				</div>
+				<div class="col-sm-1"></div>
+			</div>
+			<div class="modal-footer">
+
+				<button type="button" class="btn btn-default" data-dismiss="modal"
+					data-ng-click="addLOV();">Add</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 
+<button class="btn btn-float bgm-red m-btn" print>
+	<i class="zmdi zmdi-print"></i>
+</button> -->

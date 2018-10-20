@@ -1,0 +1,216 @@
+<div class="container" data-ng-controller="patientDetailsCtrl">
+
+ 
+	<div class="card">
+		<div class="card">
+
+			<span class="pull-Left" style="margin-top: -20px; padding: 10px;">
+				<button class="btn btn-warning waves-effect"
+					data-ng-click="btnBack();" style="margin-top: 10px;">
+					<i class="zmdi zmdi-arrow-back"></i> Back
+				</button>
+				<button class="btn btn-danger waves-effect"
+					style="margin-top: 10px;" data-ng-if="PageMode === 'New'"
+					data-ng-click="btnSave('INSERT');">
+					<i class="zmdi zmdi-thumb-up"></i> Save
+				</button>
+				<button class="btn btn-primary waves-effect"
+				data-ng-click="btnSave('UPDATE');"
+					style="margin-top: 10px;" data-ng-if="PageMode === 'UPDATE'">
+					<i class="zmdi zmdi-edit"></i> Update
+				</button>
+				<!--  <button class="btn btn-danger waves-effect"
+					style="margin-top: 10px;" data-ng-if="PageMode === 'Update'">
+					<i class="zmdi zmdi-delete"></i> Delete
+				</button>  -->
+			</span>
+
+			<hr />
+			<div class="card-header">
+				<h2 title="Make doctor active or deactive...">Patient Details</h2>
+			</div>
+
+
+			<div class="card-body card-padding p-t-0">
+
+				<div class="row" data-ng-if="PageData.regSource == 'NewB' ">
+
+					<div class="col-sm-4">
+						<div class="form-group">
+							<div class="fg-line">
+								<label for="CunsultationStartTime">Select Doctor </label>
+								<div class="select">
+									<select class="form-control" data-ng-model="params.DoctorID"
+										style="margin-top: -6px;">
+										<option value="{{item.UserID}}"
+											data-ng-repeat="item in DoctorList">{{item.name}}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div data-ng-if="params.DoctorID.length > 0">
+				
+				
+					<div class="row">
+
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="FirstName">First Name</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.FirstName"
+									placeholder="Name">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="MiddleName">Middle Name</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.MiddleName"
+									placeholder="Middle Name">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="LastName">Last Name</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.LastName"
+									placeholder="Last Name">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-4 m-b-15">
+							 
+							<div class="form-group fg-line" >
+								<label for="Gender">Gender </label> <br /> <label
+									class="radio radio-inline m-r-20"> <input type="radio"
+									value="M" data-ng-model="params.gender"> <i
+									class="input-helper"></i> Male
+								</label> <label class="radio radio-inline m-r-20"> <input
+									type="radio" value="F" data-ng-model="params.gender"> <i
+									class="input-helper"></i> Female
+								</label>
+							</div>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="City">Age</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.Age"
+									placeholder="Age">
+							</div>
+						</div>
+						
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="City">Language</label> 
+								<select class="form-control" data-ng-model="params.defaultLanguage"
+										style="margin-top: -6px;">
+										<option value="MAR">Marathi</option>
+										<option value="KAN">Kannada</option>
+										<option value="ENG">English</option>
+										<option value="TLG">Telugu</option>
+								</select>
+							</div>
+						</div>
+
+					</div>
+<hr/>
+					<div class="row">
+
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="City">Village/City Name</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.City"
+									placeholder="Come from...">
+							</div>
+						</div>
+
+						<div class="col-sm-4">
+							<div class="form-group fg-line" data-ng-show="isMobileEditable">
+								<label for="MobileNumber">Mobile Number</label> <input
+									
+									type="text" class="form-control input-sm"
+									data-ng-model="params.MobileNumber"
+									placeholder="Contact Number">
+									
+								
+							</div>
+							<label data-ng-show="!isMobileEditable">Mobile Number : {{params.MobileNumber}}</label>
+						</div>
+
+						<div class="col-sm-4" data-ng-show="false">
+							<div class="form-group fg-line">
+								<label for="Email">Email</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.Email"
+									placeholder="Email ID">
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="Adhar">Adhar Card Number</label> <input type="text"
+									class="form-control input-sm"
+									data-ng-model="params.AdharNumber"
+									placeholder="Adhar card details">
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="PAN">PAN Card Number</label> <input type="text"
+									class="form-control input-sm" data-ng-model="params.PANNumber"
+									placeholder="PAN card details">
+							</div>
+						</div>
+
+					</div>
+
+					<div class="row">
+
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="ts2">Have a Reference </label>
+								<div class="toggle-switch" data-ts-color="blue"
+									style="margin-left: 15px;">
+									<input id="ts2" type="checkbox" hidden="hidden"
+										data-ng-model="params.isHavingReference"> <label
+										for="ts2" class="ts-helper"> </label>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-4" data-ng-show="params.isHavingReference">
+							<div class="form-group fg-line">
+								<label for="ReferenceD">Reference Details</label> <input
+									type="text" class="form-control input-sm"
+									data-ng-model="params.ReferenceDetails"
+									placeholder="Reference Details">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<label for="ReferenceD">Any comment</label>
+								<div class="fg-line">
+									<textarea class="form-control" rows="5"
+										data-ng-model="params.Comment"
+										placeholder="Comments or remarks..."></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+ 
+			</div>
+		</div>
+	</div>
+</div>

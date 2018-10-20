@@ -1,0 +1,28 @@
+<div class="container" data-ng-controller="appointmentV1Ctrl as tctrl">
+	<div class="block-header">
+		<h2>Doctor Master</h2> 
+		<span class="pull-right" style="margin-top:-20px;">
+			<button class="btn btn-success waves-effect" data-ng-click="btnAddNew();">Add New Doctor</button>
+		</span> 
+
+	</div>
+ 
+	
+	<div class="card">
+        <div class="card-header">
+            <h2>
+				Doctors  <small> Active : {{DoctorList.length}} | Inactive : 0</small>				 
+			</h2>
+        </div>
+                
+        <div class="card-body"> 
+                <p  data-ng-repeat="w in AppointmentList">
+					<label data-ng-click="rowClick('PROCESS',w);">{{ w.PatientName }}</label>
+			</p> 
+        </div>
+    </div>
+	
+	
+
+
+</div>

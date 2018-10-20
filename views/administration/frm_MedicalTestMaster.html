@@ -1,0 +1,134 @@
+<div class="container" data-ng-controller="investigationMasterCtrl as tctrl">
+	<div class="block-header">
+		<h2 >Investigation</h2>
+		
+		<span class="pull-right" style="margin-top: -20px;" data-ng-if="pageScope=='list'">
+			<button class="btn btn-success waves-effect"
+				data-ng-click="btnAddNew();">Add new test</button>
+		</span>
+  
+	</div>
+
+
+	<div class="card">
+		<div class="card-header">
+			<h2 data-ng-if="pageScope=='list'">
+				 Investigation Master <small> </small>
+			</h2>
+			
+		<h2 data-ng-if="pageScope=='new'">Add new test</h2>
+
+		</div>
+
+
+		<div class="card-body  card-padding" data-ng-if="pageScope=='new'">
+		
+			<div class="row">
+
+					<div class="col-sm-4">
+							<div class="form-group fg-line">
+							
+								<label for="TestType">Select Doctor</label> 
+								<div class="select">
+									<select class="form-control" data-ng-model="newAssetParam.DoctorID"
+										style="margin-top: -6px;">
+										<option value="{{item.UserID}}" data-ng-repeat = "item in DoctorList">{{item.name}}</option>
+									</select></div>
+							</div>
+						
+					</div>
+			</div>
+			
+			<div class="row">
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+							
+								<label for="TestType">Test Type</label> 
+								<div class="select">
+									<select class="form-control" data-ng-model="newAssetParam.TestType"
+										style="margin-top: -6px;">
+										<option value="Lab" >Lab</option>
+										<option value="Image" >Imaging</option>
+									</select></div>
+							</div>
+						
+					</div>
+					
+					<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="TestType">Test Name</label> <input type="text" maxlength="100"
+									class="form-control input-sm" data-ng-model="newAssetParam.TestName"
+									placeholder="Name">
+							</div>
+						
+					</div>
+					
+					<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="TestType">price</label> <input type="number"
+									class="form-control input-sm" data-ng-model="newAssetParam.price"
+									placeholder="price">
+							</div>
+						
+					</div>
+			</div>
+			
+			<div class="row">
+
+						<div class="col-sm-4">
+							<div class="form-group fg-line">
+								<label for="TestType">Reading Values &nbsp;&nbsp;<small data-ng-if="newAssetParam.TestParams.length > 0">(Total Reading values : {{newAssetParam.TestParams.length}})</small>
+								</label> <input type="text"
+									class="form-control input-sm" style="width:100%"
+									id="reading"
+									placeholder="Reading Value">
+									 
+							</div>
+							<button class="btn bgm-blue waves-effect" 
+									style="margin-top: -4px;" data-ng-click="AddReading()">
+										 Add</button>
+							<br/>
+							
+							<ul>
+								<li data-ng-repeat="item in newAssetParam.TestParams">{{item.key}}</li>
+							</ul>
+						
+					</div>
+
+			</div>
+
+		<hr/>
+		<center>		
+			<button class="btn btn-success waves-effect" data-ng-click="btnAddNew_call();">Add {{newAssetParam.TestType}} Test</button>
+			<button class="btn btn-warning waves-effect" data-ng-click="btnAddNew_cancel();">Cancel</button>
+		</center>
+		
+		
+		</div>
+
+
+		<div class="card-body  card-padding" data-ng-if="pageScope=='list'">
+ 			<table ng-table="tctrl.tableFilter"
+					class="table table-striped table-vmiddle" show-filter="false"> 
+					<tr data-ng-repeat="w in MasterList"  >
+					
+						<td data-title="'SrNo'">{{ $index+1}}</td> 			
+						<td data-title="'Test Name'"><a href=""
+							data-ng-click="rowClick(w);">{{ w.TestName }}</a></td>			
+						<td data-title="'Doctor'">{{ w.DoctorName }}</td> 
+						<td data-title="'Price'">{{ w.price }}</td> 						
+						<td data-title="'Is Available'">
+							<span data-ng-if="w.isActive == 1">Yes</span>
+							<span data-ng-if="w.isActive == 0">No</span> </td> 
+					</tr>
+				</table>
+
+		</div>
+		  
+
+
+</div>
+
+
+
+

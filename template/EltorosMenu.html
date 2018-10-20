@@ -1,0 +1,111 @@
+<div class="sidebar-inner c-overflow">
+
+	<div class="profile-menu">
+		<a href="" toggle-submenu> 
+			<div class="profile-pic">
+				<img src="../img/profile-pics/2.jpg" alt="">
+				<span style="color:white;">{{data.HospitalName}}, {{data.City}}</span>
+			</div>
+
+			<div class="profile-info">
+				  
+				<label > 
+	        	 {{data.RoleID == '2' ? 'Dr.' : ''}} {{data.UserName }} 
+	        	 <span data-ng-if="data.RoleID != '2'">( {{data.RoleAS }} )</span>
+	        </label>
+				 <i class="zmdi zmd	i-caret-down" style="color:white;"></i>
+			</div>
+		</a>
+
+		<ul class="main-menu">
+			<li><a data-ui-sref="pages.profile.profile-about"
+				data-ng-click="mactrl.sidebarStat($event)"><i
+					class="zmdi zmdi-account"></i> View Profile</a></li>  
+			<!-- <li><a data-ng-click="hctrl.logout()" href=""><i class="zmdi zmdi-time-restore"></i> Logout</a>
+			</li> -->
+		</ul>
+	</div>
+
+
+	<ul class="main-menu">
+
+		 
+		<li data-ui-sref-active="active"><a data-ui-sref="home"
+			data-ng-click="mactrl.sidebarStat($event)"
+			data-ng-if="grant.Home.isVisible"><i
+				class="zmdi zmdi-home" style="color:#b71c1c;"></i>{{grant.Home.title}}</a></li>
+
+
+		<li class="sub-menu" data-ng-if="grant.Administrator.isVisible">
+		
+			<a href="" toggle-submenu><i
+				class="zmdi zmdi-shield-security" style="color:#1E88E5;"></i> {{grant.Administrator.title}}</a>
+			<ul>
+				<li><a data-ui-sref="app.user"
+					data-ng-click="mactrl.sidebarStat($event)"> User Master</a></li>
+				
+				<li class="sub-menu"><a href="" toggle-submenu="">Masters</a>
+					<ul>
+						<li><a data-ui-sref="app.iDetails"
+					data-ng-click="mactrl.sidebarStat($event)"> Investigation</a></li>
+						<li><a href="" data-ui-sref="app.lov"  
+						data-ng-click="mactrl.sidebarStat($event)">LOV</a></li> 
+					</ul>
+				</li>
+				
+				<li><a data-ui-sref="app.hosp"
+					data-ng-click="mactrl.sidebarStat($event)"> My Hospital</a></li>
+				 
+				<li><a data-ui-sref="app.subscription"
+					data-ng-click="mactrl.sidebarStat($event)"> My Subscription</a></li>
+				 
+                <li><a 	data-ng-click="mactrl.sidebarStat($event)">Manage My Account</a></li>
+				
+			</ul></li>
+
+		<li data-ui-sref-active="active"><a data-ui-sref="app.patient"
+			data-ng-click="mactrl.sidebarStat($event)" data-ng-if="grant.Patient.isVisible"><i
+				class="zmdi zmdi-accounts-outline"  style="color:#FF9800;"></i> {{grant.Patient.title}}</a></li>
+		
+		<li data-ui-sref-active="active"><a data-ui-sref="app.sms"
+			data-ng-click="mactrl.sidebarStat($event)" data-ng-if="grant.Messaging.isVisible"><i
+				class="zmdi zmdi-smartphone-android"  style="color:#2196F3;"></i>{{grant.Messaging.title}} </a></li>
+
+		<li data-ui-sref-active="active"><a data-ui-sref="app.slotManager"
+			data-ng-click="mactrl.sidebarStat($event)" data-ng-if="grant.Slot.isVisible"><i
+				class="zmdi zmdi-time"  style="color:#FF9800;"></i> {{grant.Slot.title}}<span class="pull-right"><img style="width: 25px; " src="../img/gif/new.gif" alt="Beta Coming"/></span>
+				</a>
+				
+				</li>
+		
+		
+
+		<li class="sub-menu"><a href="" toggle-submenu data-ng-if="grant.Appointments.isVisible"><i
+				class="zmdi zmdi-favorite" style="color:red;"></i> {{grant.Appointments.title}}</a>
+			<ul>
+				<li data-ui-sref-active="active" data-ng-if="grant.Appointments.sub.MakeAppointment.isVisible"><a
+					data-ui-sref="app.make"
+					data-ng-click="mactrl.sidebarStat($event)">  {{grant.Appointments.sub.MakeAppointment.title}}</a></li>
+				<li data-ui-sref-active="active" data-ng-if="grant.Appointments.sub.Approval.isVisible"><a
+					data-ui-sref="app.appointmentApproval"
+					data-ng-click="mactrl.sidebarStat($event)"> {{grant.Appointments.sub.Approval.title}}</a></li>
+				<li data-ui-sref-active="active" data-ng-if="grant.Appointments.sub.MyAppointment.isVisible"><a
+					data-ui-sref="app.appointmentList"
+					data-ng-click="mactrl.sidebarStat($event)">  {{grant.Appointments.sub.MyAppointment.title}}</a></li>
+				<li data-ui-sref-active="active" data-ng-if="grant.Appointments.sub.MissedCallList.isVisible"><a
+					data-ui-sref="app.missedCallList"
+					data-ng-click="mactrl.sidebarStat($event)">  {{grant.Appointments.sub.MissedCallList.title}}</a></li>				
+						
+			</ul>
+		</li>
+
+        <li data-ui-sref-active="active" data-ng-if="grant.Invoice.isVisible"><a data-ui-sref="app.invoice_v"
+			data-ng-click="mactrl.sidebarStat($event)"><i
+				class="zmdi zmdi-print" style="color:#4CAF50;"></i> {{grant.Invoice.title}} </a></li>
+				
+		<li data-ui-sref-active="active" data-ng-if="grant.Investigation.isVisible"><a data-ui-sref="app.investigation"
+			data-ng-click="mactrl.sidebarStat($event)" ><i
+				class="zmdi zmdi-puzzle-piece" style="color:#FFEB3B;"></i> {{grant.Investigation.title}} </a></li> 			 
+		 
+	</ul>
+</div>

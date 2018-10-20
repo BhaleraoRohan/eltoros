@@ -1,0 +1,104 @@
+
+<div class="container" data-ng-controller="subscriptionCtrl">
+	<div class="block-header">
+		<h2>My Subscription</h2>
+		<span class="pull-right" style="margin-top: -20px;">
+			 
+		</span>
+
+	</div>
+
+
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				Subscription Details <small> </small>
+			</h2>
+		</div>
+
+		<div class="card-body  card-padding p-t-0">
+
+			<div class="row">
+				<div class="col-sm-4" data-name="badge-check"
+					uib-tooltip="Messeging Service">
+					<p>
+						<i class="zmdi zmdi-badge-check zmdi-hc-fw" style="color: green;"
+							data-ng-if="SubscriptionData.isMessegingRequest == '1'"></i> <i
+							class="zmdi zmdi-block-alt zmdi-hc-fw" style="color: red;"
+							data-ng-if="SubscriptionData.isMessegingRequest == '0'"></i> <span>Messeging
+							Service</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4" data-name="badge-check"
+					uib-tooltip="Missed call to appoint Service">
+					<p>
+						<i class="zmdi zmdi-badge-check zmdi-hc-fw" style="color: green;"
+							data-ng-if="SubscriptionData.isMisscallRequest == '1'"></i> <i
+							class="zmdi zmdi-block-alt zmdi-hc-fw" style="color: red;"
+							data-ng-if="SubscriptionData.isMisscallRequest == '0'"></i> <span>Missed
+							call to appoint Service</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4" data-name="badge-check"
+					uib-tooltip="Lab Management">
+					<p>
+						<i class="zmdi zmdi-badge-check zmdi-hc-fw" style="color: green;"
+							data-ng-if="SubscriptionData.isLabRequest == '1'"></i> <i
+							class="zmdi zmdi-block-alt zmdi-hc-fw" style="color: red;"
+							data-ng-if="SubscriptionData.isLabRequest == '0'"></i> <span>Lab
+							Management</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4" data-name="badge-check"
+					uib-tooltip="Investigation">
+					<p>
+						<i class="zmdi zmdi-badge-check zmdi-hc-fw" style="color: green;"
+							data-ng-if="SubscriptionData.isInvestigationRequest == '1'"></i>
+						<i class="zmdi zmdi-block-alt zmdi-hc-fw" style="color: red;"
+							data-ng-if="SubscriptionData.isInvestigationRequest == '0'"></i>
+						<span>Investigation</span>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4" data-name="badge-check"
+					uib-tooltip="Advanced Reporting">
+					<p>
+						<i class="zmdi zmdi-badge-check zmdi-hc-fw" style="color: green;"
+							data-ng-if="SubscriptionData.isAdvancedReportingRequest == '1'"></i>
+						<i class="zmdi zmdi-block-alt zmdi-hc-fw" style="color: red;"
+							data-ng-if="SubscriptionData.isAdvancedReportingRequest == '0'"></i>
+						<span>Advanced Reporting</span>
+					</p>
+				</div>
+			</div>
+			<hr/>
+			<div class="row">
+				<div class="col-sm-3">
+					<p>
+						<label>SMS Subscribed : {{SubscriptionData.AvailableSMS}}</label>
+						<label>SMS Used : {{SubscriptionData.TotalSMS}}</label>
+					</p>
+					<div class="epc-item bgm-pink">
+						<div class="easy-pie main-pie" data-percent="{{SubscriptionData.SMSPerc}}"
+							data-easypie-chart>
+							<div class="percent">{{SubscriptionData.SMSPerc}}</div>
+							<div class="pie-title">SMS Remaining</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+</div>

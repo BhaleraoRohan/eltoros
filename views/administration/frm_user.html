@@ -1,0 +1,55 @@
+<div class="container" data-ng-controller="userCtrl as tctrl">
+	<div class="block-header">
+		<h2>User Master</h2>
+		<span class="pull-right" style="margin-top: -20px;">
+			<button class="btn btn-success waves-effect"
+				data-ng-click="btnAddNew();">Add New User</button>
+		</span>
+
+	</div>
+
+
+	<div class="card">
+		<div class="card-header">
+			<h2>
+				User <small> Active : {{UserList.length}} | Inactive : 0</small>
+			</h2>
+		</div>
+
+		<div class="card-body">
+			<div class="table-responsive">
+				<table ng-table="tctrl.tableFilter"
+					class="table table-striped table-vmiddle" show-filter="false">
+					<tr ng-repeat="w in UserList">
+						<td data-title="'#'">{{$index+1 }}</td>
+						<td data-title="'Name'" filter="{ 'name': 'text' }"><a
+							data-ng-click="rowClick(w.UserID,w.RoleID);" href=""> {{
+								w.name }}</a></td>
+						<td data-title="'Contact Number'" filter="{ 'Contact_1': 'text' }">
+							{{ w.Contact_1 }}</td>
+						<td data-title="'Role Assigned'" filter="{ 'RoleName	': 'text' }">{{
+							w.RoleName }}</td>
+						<!-- <td data-title="'Status'">Active : {{ w.isActive }}</td> -->
+					<!-- 	<td data-title="'User Status'"> 
+								<div class="toggle-switch" data-ts-color="blue"
+									style="margin-left: 15px;">
+									<input id="ts2" type="checkbox" hidden="hidden"
+										data-ng-model="w.isToggleActive"
+										data-ng-click="onuserStatusChange(w);"
+										> <label for="ts2"
+										class="ts-helper"> </label>
+								</div>  -->
+
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			  
+		</div>
+	</div>
+
+
+
+
+</div>
