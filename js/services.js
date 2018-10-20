@@ -9,6 +9,7 @@ materialAdmin
 		 var FrameworkService = {}; 
 		 //FrameworkService.ServerAddress  = "http://eltoros.net/V4_API/";
 		 FrameworkService.ServerAddress  = "http://api.eltoros.net/";
+		 FrameworkService.ServerAddress  = "http://localhost/V4_EL_API/";
 		 FrameworkService.ControllerAddress  = "V4_API/";
 		
 		
